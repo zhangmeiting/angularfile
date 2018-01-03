@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='app'>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body ng-controller="main">
+    <div class="box">
+        {{val}}
+        <ul>
+            
+        </ul>
+    </div>
+    $ gulp 文件夹名称
+    <script src="angular.min.js"></script>
+<script>
+    // var param;
+    // var xml=new XMLHttpRequest();
+    // xml.open('get','http://localhost:8090/index.html?product');
+    // xml.send(null);
+    // xml.onreadystatechange=function(){
+    //     if(xml.readyState==4 && xml.status == 200){
+    //         /////console.log(JSON.parse(xml.responseText).data);
+    //         param=JSON.parse(xml.responseText).data;
+    //         console.log(JSON.parse(param));
+    //         var datas=JSON.parse(param);
+    //         var str='';
+    //         datas.forEach(function(v,i){
+    //             str+='<li><b>'+v.title+'</b><i>'+v.content+'</i></li>';
+    //         })
+    //         document.getElementsByTagName('ul')[0].innerHTML=str;
+
+    //     }
+    // }
+
+
+
+    var param;
+    var xml=new XMLHttpRequest();
+    xml.open('get','http://localhost:8090/index.html?product');
+    xml.send(null);
+    xml.onreadystatechange=function(){
+        if(xml.readyState==4 && xml.status==200){
+            console.log(JSON.parse(xml.responseText).data);
+            param=JSON.parse(xml.responseText).data;
+            console.log(JSON.parse(param));
+            var datas=JSON.parse(param);
+            var str='';
+            datas.forEach(function(v,i){
+                str+='<li><b>'+v.title+'</b><i>'+v.content+'</i></li>';
+            })
+            document.getElementsByTagName('ul')[0].innerHTML=str;
+        }
+    }
+   
+        angular.module('app',[])
+            .controller('main',function($scope){
+                $scope.val='66666666666';
+            })
+</script>
+</body>
+</html>

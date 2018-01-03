@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-controller="main">
+	<tab data="data"></tab>
+</body>
+<script src="angular.min.js"></script>
+</html>
+<script>
+	angular.module('app',[])
+			.controller('main',['$scope',function($scope){
+				$scope.data=[
+					{
+						name:'春天',
+						value:'希望',
+						imgurl:'img/1.jpg'
+					},
+					{
+						name:'夏天',
+						value:'活力',
+						imgurl:'img/2.jpg'
+					},
+					{
+						name:'秋天',
+						value:'收获',
+						imgurl:'img/3.jpg'
+					},
+					{
+						name:'冬天',
+						value:'积淀',
+						imgurl:'img/4.jpg'
+					}
+				]
+			}])
+			.directive('tab',[function(){
+				return {
+					restrict:'E',
+					templateUrl:'./tab.html',
+					controller:['$scope',function($scope){
+						$scope.fn=function(value){
+							$scope.value=value;
+						}
+					}],
+					scope:{
+						data:'='
+					}
+					
+				}
+			}])
+</script>

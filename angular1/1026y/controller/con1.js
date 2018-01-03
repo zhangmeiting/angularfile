@@ -1,0 +1,10 @@
+app.controller('main',['$scope','$http',function($scope,$http){
+    $http({
+        url:'http://localhost:8888/index.html?data'
+    }).then(function(res){
+        $scope.vals=JSON.parse(res.data.data);
+        //console.log(JSON.parse(res.data.data));
+    },function(err){
+        //console.log(err);
+    })
+}]);

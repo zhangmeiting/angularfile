@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-controller="main">
+	<div my-click="fn($event)">aaaa</div>
+</body>
+<script src="angular.min.js"></script>
+</html>
+<script>
+	angular.module('app',[])
+		.controller('main',['$scope',function($scope){
+			// $scope.fn=function(){
+			// 	console.log('clickclickclick');
+			// }
+			
+
+			$scope.fn=function(event){
+				console.log(event.target);
+				console.log('clickclickclick');
+			}
+		}])
+		.directive('myClick',function(){
+			return function($scope,$element,$attribute){
+				// console.log($attribute['myClick']);/////fn()
+				// function fn(){
+				// 	$scope.$apply($attribute['myClick']);
+				// }
+				// $element.on('click',fn);
+				
+
+
+				    // function fn(){
+				    // 	var jscode='$scope.'+$attribute['myClick']+';'
+				    // 	eval(jscode);
+				    // }
+                  //  $element.bind('click',fn)
+        		
+					
+
+					function fn(event){
+						$scope.$event=event;
+						$scope.$apply($attribute['myClick']);
+					}
+					$element.bind('click',fn);
+			}
+		})
+</script>

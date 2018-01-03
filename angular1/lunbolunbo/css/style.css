@@ -1,0 +1,53 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.big{
+    width: 800px;
+    height: 300px;
+    margin: 20px auto;
+    position: relative;
+}
+.box{
+    position: absolute;
+    left: 100px;
+    bottom: 10px;
+}
+.box ul{
+    display: -webkit-flex;
+}
+.box ul li{
+    width: 50px;
+    height:50px;
+    border-radius: 100%;
+    text-align: center;
+    margin: 0 20px;
+    line-height: 50px;
+    background: skyblue;
+}
+.down{
+    width: 800px;
+    height: 300px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+.down dl{
+    width: 100%;
+    height: 300px;
+}
+.down dl dt{
+    line-height: 30px;
+    text-align: center;
+}
+.down dl dd{
+    width: 100%;
+    height: 270px;
+}
+.down dl dd img{
+    width: 100%;
+    height: 100%;
+}
+.box ul li.active{
+    background: limegreen;
+}

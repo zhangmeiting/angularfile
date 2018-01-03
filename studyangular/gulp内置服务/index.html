@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-controller="main">
+	{{message}}
+</body>
+<script src="angular.min.js"></script>
+</html>
+<script>
+	angular.module('app',[])
+			.controller('main',['$scope','$timeout',function($scope,$timeout){
+			$scope.message='hello';	
+			// setTimeout(function(){
+			// 	$scope.message='hello world';
+			// 	$scope.$apply();
+			// 	////$scope.$digest();
+			// },1000)
+			var times=$timeout(function(){
+				$scope.message='hello world';
+			},1000)
+			$timeout.cancel(times);
+			///////////以上方法中用到$timeout在controller
+			// function $timeout(fn,time){
+			// 	var fn1=function(){
+			// 		try{
+			// 			fn();
+			// 		}catch(e){
+
+			// 		}finally{
+			// 			$scope.$apply();
+			// 		}
+					
+					
+			// 	}
+			// 	setTimeout(fn1,time)
+			// }
+			// $timeout(function(){
+			// 	$scope.message='hello world111';
+			// },1000)
+		}])
+</script>

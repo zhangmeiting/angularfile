@@ -1,0 +1,58 @@
+<div class="up">
+    <dl>
+        <dt>
+            <i class="iconfont">&#xe651;</i>
+            <b>最新动态</b>
+        </dt>
+        <dd>
+            <i class="iconfont">&#xe602;</i>
+            <b>设置</b>
+        </dd>
+    </dl>
+</div>
+<div class="center">
+    <dl ng-repeat="val in vals">
+        <dt><p>来自话题:<span>{{val.title}}</span></p><p><img ng-src="{{val.src}}" alt=""></p></dt>
+        <dd>
+            <h6>{{val.word}}</h6>
+        </dd>
+        <dd>
+            <h5>
+                {{val.lefts}}
+                <b>{{val.rights}}</b>
+            </h5>
+        </dd>
+        <dd>
+            <p>
+                {{val.articles}}
+                <i>显示全部</i>
+            </p>
+        </dd>
+        <dd>
+            <em>1390</em><strong class="iconfont">&#xe663;</strong>关注问题<strong class="iconfont">&#xe64c;</strong>226条评论<strong class="iconfont">&#xe604;</strong>感谢
+            <strong class="iconfont">&#xe645;</strong>申请转载
+        </dd>
+    </dl>
+    <!--<dl>-->
+        <!--<dt><p>来自话题:<span>心理学</span></p><p><img src="img/2.png" alt=""></p></dt>-->
+        <!--<dd>-->
+            <!--<h6>喜欢一个人就会想要和他/她有身体接触吗?</h6>-->
+        <!--</dd>-->
+        <!--<dd>-->
+            <!--<h5>-->
+                <!--钱品聚,-->
+                <!--<b>希望养恶鬼，热情喂狂风</b>-->
+            <!--</h5>-->
+        <!--</dd>-->
+        <!--<dd>-->
+            <!--<p>-->
+                <!--谢邀。年幼无知的时候，办过一件每天送花的蠢事儿。-->
+                <!--找了一家花店，跟老板谈好了价格。一年365天，一天一朵玫瑰，用快递送过去。我说能不能保证玫瑰的粉嫩，别在路上枯萎，拆开后依旧芬芳。老板只是说尽量。三天后，第一朵玫瑰如期而至，还没拆开，就让... <i>显示全部</i>-->
+            <!--</p>-->
+        <!--</dd>-->
+        <!--<dd>-->
+            <!--<em>1390</em><strong class="iconfont">&#xe663;</strong>关注问题<strong class="iconfont">&#xe64c;</strong>226条评论<strong class="iconfont">&#xe604;</strong>感谢-->
+            <!--<strong class="iconfont">&#xe645;</strong>申请转载-->
+        <!--</dd>-->
+    <!--</dl>-->
+</div>

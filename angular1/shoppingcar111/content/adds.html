@@ -1,0 +1,22 @@
+
+   <table>
+       <tr ng-repeat="vals in val">
+           <td><small ng-class="{hv:vals.status}" ng-click="clicks($index)"></small></td>
+           <td><p><img ng-src="{{vals.src}}" alt=""/></p></td>
+           <td>
+               <h5 ng-click="indexs($index)">{{vals.com}}</h5>
+           </td>
+           <td>单价:<strong>{{vals.price}}</strong></td>
+           <td><em ng-click="cons('-',$index)">-</em><span>{{vals.num}}</span><em ng-click="cons('+',$index)">+</em></td>
+           <!--<td>总价:<b>{{vals.addup}}</b></td>-->
+       </tr>
+       <tr>
+           <td><small ng-click="clickall()" ng-class="{hv:flag}"></small></td>
+           <td colspan="2">共选择<i class="things">{{counts}}</i>件商品</td>
+           <td colspan="2">总价格:<i class="price">{{prices}}</i>元</td>
+           <td>共节省:<i class="yuan">0</i>元</td>
+           <td><h6 class="ince">去结算</h6></td>
+       </tr>
+   </table>
+
+

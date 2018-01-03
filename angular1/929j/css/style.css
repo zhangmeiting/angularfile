@@ -1,0 +1,87 @@
+@import url(reset.css);
+html, body, .box {
+  width: 100%;
+  height: 100%;
+  background: #6BA9FC; }
+
+.box {
+  display: flex;
+  flex-direction: column; }
+
+header {
+  width: 100%;
+  height: 0.5rem;
+  background: white;
+  display: flex;
+  justify-content: space-between; }
+  header .iconfont {
+    padding-left: 0.18rem;
+    font-size: 0.24rem;
+    color: #6BA9FC;
+    line-height: 0.5rem; }
+  header b {
+    font-size: 0.18rem;
+    color: #000;
+    line-height: 0.5rem; }
+
+main {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden; }
+
+.main {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  .main h4 {
+    width: 90%;
+    height: 0.4rem;
+    line-height: 0.4rem;
+    font-size: 0.24rem;
+    color: white;
+    margin: 0.3rem 0;
+    text-align: center; }
+  .main ul {
+    width: 90%;
+    height: 1.08rem;
+    display: flex;
+    box-sizing: border-box; }
+    .main ul li {
+      flex: 1;
+      border: 0.01rem solid white;
+      border-radius: 0.08rem;
+      margin: 0 0.05rem; }
+      .main ul li .iconfont {
+        display: block;
+        font-size: 0.48rem;
+        color: white;
+        line-height: 0.8rem;
+        text-align: center; }
+      .main ul li b {
+        display: block;
+        font-size: 0.12rem;
+        color: white;
+        line-height: 0.1rem;
+        text-align: center; }
+  .main p {
+    width: 90%;
+    line-height: 0.4rem;
+    font-size: 0.12rem;
+    color: white;
+    margin-top: 0.3rem; }
+  .main dl {
+    width: 90%;
+    height: auto; }
+    .main dl dt img {
+      width: 1.13rem;
+      height: 1.13rem; }
+    .main dl dd {
+      font-size: 0.12rem;
+      color: black;
+      line-height: 0.4rem;
+      text-indent: 0.15rem; }
+
+/*# sourceMappingURL=style.css.map */

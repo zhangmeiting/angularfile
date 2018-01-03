@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telphone=no, email=no" >
+    <title></title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="fonts/iconfont.css">
+    <link rel="stylesheet" href="css/swiper-3.3.1.min.css">
+    <script>
+    	document.documentElement.style.fontSize=window.innerWidth/375*50+'px';
+    </script>
+</head>
+<body ng-controller="main">
+	<div class="box">
+		<header>
+			<div class="header">
+
+				<ul>
+					<li ui-sref="one" ui-sref-active="libg">原创</li>
+					<li ui-sref="two" ui-sref-active="libg">优创</li>
+					<li ui-sref="three" ui-sref-active="libg">视频</li>
+					<li ui-sref="four" ui-sref-active="libg">推荐</li>
+					<li ui-sref="five" ui-sref-active="libg">游记</li>
+				</ul>
+				<i class="iconfont">&#xe624;</i>
+				<i class="iconfont">&#xe64f;</i>
+			</div>
+		</header>
+		<main>
+			<ui-view></ui-view>
+		</main>
+		<footer>
+			<div class="footer">
+				<dl ng-click="fn1()" ng-class="bools1">
+					<dt><i class="iconfont">&#xe6df;</i></dt>
+					<dd>首页</dd>
+				</dl>
+				<dl ng-click="fn2()" ng-class="bools2">
+					<dt><i class="iconfont">&#xe664;</i></dt>
+					<dd>论坛</dd>
+				</dl>
+				<dl ng-click="fn3()" ng-class="bools3">
+					<dt><i class="iconfont">&#xe663;</i></dt>
+					<dd>选车</dd>
+				</dl>
+				<dl ng-click="fn4()" ng-class="bools4">
+					<dt><i class="iconfont">&#xe650;</i></dt>
+					<dd>发现</dd>
+				</dl>
+				<dl ng-click="fn5()" ng-class="bools5">
+					<dt><i class="iconfont">&#xe63f;</i></dt>
+					<dd>未登录</dd>
+				</dl>
+			</div>
+		</footer>
+	</div>
+</body>
+<script src="js/jquery-1.8.3.js"></script>
+<script src="js/swiper-3.4.2.min.js"></script>
+<script src="js/iscroll.js"></script>
+
+<script src="js/angular.min.js"></script>
+<script src="js/angular-ui-router.js"></script>
+
+<script src="app/app.js"></script>
+
+<script src="server/ser1.js"></script>
+<script src="server/ser2.js"></script>
+
+<script src="controller/con1.js"></script>
+
+<script src="directive/dir1.js"></script>
+</html>
+<script>
+//	new IScroll('#harea',{
+//		scrollX:true,
+//		scrollY:false,
+//		mouseWheel:true
+//	});
+</script>

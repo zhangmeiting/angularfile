@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box{
+			display: flex;
+		}
+		.box div{
+			flex: 1;
+		}
+	</style>
+</head>
+<body ng-controller="main">
+	<div class="box">
+		<div ui-sref="home({keys:{name:'zs',age:'12'}})">home</div>
+		<!-- [1,2,3,4] -->
+		<div ui-sref="about">about</div>
+		<div ui-sref="me">me</div>
+	</div>
+	<ui-view></ui-view>
+</body>
+<script src="angular.min.js"></script>
+<script src="angular-ui-router.js"></script>
+</html>
+<script>
+	angular.module('app',['ui.router'])
+			.config(['$stateProvider',function($stateProvider){
+				$stateProvider.state('home',{
+					url:'/home',
+					template:'<div>home</div>',
+					controller:['$scope','$stateParams',function($scope,$stateParams){
+						console.log($stateParams);
+						console.log($stateParams.keys);
+						console.log(typeof $stateParams.keys);
+						// $stateParams.keys.forEach(function(v,i){
+						// 	console.log(v);
+						// 	console.log(i);
+						// })
+						for(var i in $stateParams.keys){
+								console.log(i);
+								console.log($stateParams.keys[i]);
+						}
+					}],
+					params:{
+						// keys:[]
+						keys:{}
+					}
+				})
+				.state('about',{
+					url:'/about',
+					template:'<div>about</div>',
+					controller:['$scope',function($scope){
+						
+					}]
+				})
+				.state('me',{
+					url:'/me',
+					template:'<div>me</div>',
+					controller:['$scope',function($scope){
+						
+					}]
+				})
+			}])
+			.controller('main',['$scope',function($scope){
+
+			}])
+</script>

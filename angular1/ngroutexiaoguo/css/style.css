@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.dls{
+    width: 400px;
+    height: auto;
+}
+.dls .dts{
+    width: 400px;
+    height: 40px;
+    line-height: 40px;
+    background: skyblue;
+    text-align: center;
+    font-size: 16px;
+}
+.dls .dds{
+    width: 400px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 16px;
+    background: orange;
+    display: none;
+}

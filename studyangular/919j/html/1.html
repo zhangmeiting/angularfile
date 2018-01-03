@@ -1,0 +1,35 @@
+<div>
+	<style>
+		.wrap{
+			width: 100%;
+			height: 1rem;
+		}
+		.wrap ul{
+			display: flex;
+		}
+		.wrap ul li{
+			flex: 1;
+			text-align: center;
+			line-height: 1rem;
+			font-size: 0.3rem;
+			color: black;
+		}
+		.wrap ul li.bg{
+			color: red;
+			border-bottom: 0.02rem solid red;
+		}
+	</style>
+	<div class="wrap">
+		<ul>
+			<!-- <li>个性推荐</li>
+			<li>歌单</li>
+			<li>电台</li>
+			<li>排行榜</li> -->
+			<li ui-sref="one.four" ui-sref-active="bg">个性推荐</li>
+			<li ui-sref="one.five" ui-sref-active="bg">歌单</li>
+			<li ui-sref="one.six" ui-sref-active="bg">电台</li>
+			<li ui-sref="one.seven" ui-sref-active="bg">排行榜</li>
+		</ul>
+	</div>
+	<ui-view></ui-view>
+</div>

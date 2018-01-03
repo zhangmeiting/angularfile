@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telphone=no, email=no" >
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        html,body,.box{
+            width: 100%;
+            height: 100%;
+        }
+        .box{
+            display: flex;
+            flex-direction: column;
+        }
+        header{
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+        }
+        main{
+            flex: 1;
+            overflow-y: auto;
+        }
+        main dl{
+            width: 100%;
+            height: 200px;
+            border-right: 8px;
+        }
+        main dl dt{
+            height: 50px;
+            display: flex;
+            justify-content: space-around;
+            background: cornflowerblue;
+            }
+        main dl dt span{
+            line-height: 50px;
+            color: white;
+            font-size: 16px;
+        }
+        main dl dd{
+            height: 50px;
+            display: flex;
+            justify-content: space-around;
+            background: white;
+        }
+        main dl dd b{
+            line-height: 50px;
+            color: green;
+            font-size: 16px;
+        }
+        main dl dd i{
+            line-height: 50px;
+            color: blue;
+            font-size: 16px;
+            font-style: normal;
+        }
+    </style>
+</head>
+<body ng-controller="main">
+        <div class="box">
+            <header>我的抽奖号码</header>
+            <main>
+                <add></add>
+                <adds></adds>
+                <addss></addss>
+            </main>
+        </div>
+
+</body>
+<script src="angular.min.js"></script>
+</html>
+<script>
+    angular.module('app',[])
+            .controller('main',['$scope',function($scope){
+
+            }])
+            .directive('add',function(){
+                return {
+                   restrict:'ECMA',
+                    templateUrl:'add.html',
+                    controller:'main',
+                    link:function(scope,ele,attr,controller){
+                        var add=document.getElementsByTagName('i')[0];
+                            add.onclick=function(){
+                                alert('1234567');
+                            }
+                    }
+                }
+            })
+            .directive('adds',function(){
+                return {
+                    restrict:'ECMA',
+                    templateUrl:'adds.html',
+                    controller:'main',
+                    link:function(scope,ele,attr,controller){
+                        var adds=document.getElementsByTagName('i')[1];
+                        adds.onclick=function(){
+                            alert('1234567');
+                        }
+                    }
+                }
+            })
+            .directive('addss',function(){
+                return {
+                    restrict:'ECMA',
+                    templateUrl:'addss.html',
+                    controller:'main',
+                    link:function(scope,ele,attr,controller){
+                        var addss=document.getElementsByTagName('i')[2];
+                        addss.onclick=function(){
+                            alert('1234567');
+                        }
+                    }
+                }
+            })
+</script>

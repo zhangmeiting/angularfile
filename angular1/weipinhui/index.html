@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
+	<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<meta name="format-detection" content="telphone=no, email=no" >
+	<title>Document</title>
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="fonts/iconfont.css">
+	<link rel="stylesheet" href="css/swiper-3.3.1.min.css">
+	<script>
+		document.documentElement.style.fontSize=window.innerWidth/320*100+'px';
+	</script>
+</head>
+<body ng-controller="main">
+	<div class="box">
+		<header>
+			<i class="iconfont">&#xe63f;</i>
+			<b>唯品会</b>
+			<i class="iconfont">&#xe624;</i>
+		</header>
+		<main>
+			<add></add>
+		</main>
+		
+	</div>
+
+</body>
+<script src="js/swiper-3.4.2.min.js"></script>
+<script src="js/angular.min.js"></script>
+<script src="js/angular-ui-router.js"></script>
+</html>
+<script>
+
+	angular.module('app',[])
+			.controller('main',['$scope','$http',function($scope,$http){
+				$http({
+					url:'http://localhost:8888/index.html?data'
+				}).then(function(res){
+					console.log(res.data.data);
+					$scope.val=JSON.parse(res.data.data);
+				},function(err){
+					console.log(err);
+				})
+			}])
+			.directive('add',function(){
+				return {
+					restrict:'ECMA',
+					templateUrl:'add.html',
+					controller:'main',
+					link:function(scope,ele,attr,controller){
+						new Swiper('#imgs',{
+							autoplay:2000,
+							loop:true,
+							pagination:'.swiper-pagination'
+						});
+						var bs=document.getElementsByTagName('b')[0];
+						var cover=document.getElementsByClassName('cover')[0];
+						bs.onclick=function(){
+							cover.style.display='block';
+						}
+					}
+				}
+			})
+</script>

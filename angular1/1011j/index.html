@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='app'>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		.box{
+			width: 600px;
+			height: auto;
+			margin: 30px auto;
+		}
+		.box p button{
+			outline: none;
+			border: none;
+			background: #ccc;
+			height: 20px;
+			line-height: 20px;
+			margin: 0 15px;
+			padding: 0px 10px;
+			text-align: center;
+		}
+		table{
+			width: 600px;
+			height: auto;
+			margin: 10px 0;
+		}
+		table tr th{
+			width: 200px;
+			text-align: left;
+			vertical-align: middle;
+			height: 30px;
+		}
+		table tr{
+			display: flex;
+		}
+		table tr td{
+			flex: 1;
+			text-align: left;
+			vertical-align: middle;
+			height: 30px;
+			border-top: 1px solid #ccc;
+		}
+	</style>
+</head>
+<body ng-controller='main'>
+	<div class="box">
+		<p><input type="text" ng-model="values"><button>Search</button></p>
+		<table>
+			<thead>
+				<tr>
+					<th ng-click='fn("num")'>产品编号</th>
+					<th ng-click='fn("name")'>产品名称</th>
+					<th ng-click='fn("price")'>产品价钱</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="vals in val | orderBy:items:bools" >
+					<td>{{vals.num}}</td>
+					<td>{{vals.name}}</td>
+					<td>{{vals.price}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+<script src="angular.min.js"></script>
+</html>
+<script>
+	angular.module('app',[])
+			.controller('main',['$scope',function($scope){
+				$scope.val=[
+					{
+						num:'111',
+						name:'iphone1',
+						price:'112'
+					},
+					{
+						num:'222',
+						name:'iphone2',
+						price:'222'
+					},
+					{
+						num:'333',
+						name:'iphone3',
+						price:'332'
+					},
+					{
+						num:'444',
+						name:'iphone4',
+						price:'442'
+					},
+					{
+						num:'555',
+						name:'iphone5',
+						price:'552'
+					}
+				]
+				$scope.bools=false;
+				$scope.fn=function(items){
+					$scope.bools=!$scope.bools;
+				}
+			}])
+	
+</script>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='app'>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-controller="main">
+	<ui-view></ui-view>
+</body>
+<script src="angular.min.js"></script>
+<script src="angular-ui-router.js"></script>
+</html>
+<script>
+	angular.module('app',['ui.router'])
+			.controller('main',function($scope,$stateParams){
+				console.log($stateParams.id);
+			})
+			.config(function($stateProvider,$urlRouterProvider){
+				$stateProvider
+					.state('one',{
+						url:'/one/:id',
+						template:'one',
+						controller:'main'
+					})
+					.state('two',{
+						url:'/two/:id',
+						template:'two',
+						controller:'main'
+					});
+				$urlRouterProvider.otherwise('/one');
+			})
+</script>

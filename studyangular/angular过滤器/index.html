@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app" ng-init="array=[
+					{name:'kimi',age:3},
+					{name:'cindy',age:4},
+					{name:'anglar',age:4},
+					{name:'tiantian',age:5},
+					{name:'shitou',age:6}
+				]">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-controller="main">
+	<!-- {{price | currency}}
+	{{price | currency : '￥'}}
+	{{price | currency : char}} -->
+	<!-- {{1504939219041 | date}} -->
+	<!-- {{1504939219041 | date:'yyyy-MM-dd hh mm ss EEEE'}} -->
+	<!-- {{1504939219041 | date:'EEE-dd-ss'}} -->
+	<!-- {{1504939219041 | date:formatstr}} -->
+	<!-- {{data | filter}}
+	{{data | filter :3}} -->
+	<!-- {{data | filter :'i'}} -->
+	<!-- {{data | filter :value}} -->
+	<!-- {{data | filter :fn}} -->
+	<!-- {{jsonobj | json}}
+	<p>{{jsonobj}}</p> -->
+	<!-- {{'nihao' | limitTo:2}} -->
+	<!-- {{[1,3,4] | limitTo:2}} -->
+	<!-- {{[{name:'zs',age:18},3,4] | limitTo:2}} -->
+	<!-- {{'hello' | uppercase}}
+	{{'HELLO' | lowercase}} -->
+	<!-- {{1000 | number}} -->
+	<!-- {{3.141592653 | number:2}} -->
+	<table>
+		<thead>
+			<tr>
+				<th>姓名</th>
+				<th>年龄</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="item in array | orderBy :val">
+				<td>
+					{{item.name}}
+				</td>
+				<td>
+					{{item.age}}
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<button ng-click='fn1()'>orderby</button>
+</body>
+<script src="angular.min.js"></script>
+</html>
+<script>
+	angular.module('app',[])
+			.controller('main',['$scope',function($scope){
+				// $scope.price=1000;
+				// $scope.char='￥';
+				// $scope.formatstr='yyyy/MM/dd';
+				// $scope.data=[
+				// 	{name:'kimi',age:3},
+				// 	{name:'cindy',age:4},
+				// 	{name:'anglar',age:4},
+				// 	{name:'tiantian',age:5},
+				// 	{name:'shitou',age:6}
+				// ]
+				// $scope.value='a';
+				// $scope.fn=function(data){
+				// 	return data.name>'m'
+				// 	// return data.age>=5
+				// }
+				// $scope.jsonobj={name:'zs',age:18}
+				$scope.val='-age';
+				$scope.fn1=function(){
+					if($scope.val=='-age'){
+						$scope.val='age';
+					}else{
+						$scope.val='-age';
+					}
+				}
+			}])
+</script>

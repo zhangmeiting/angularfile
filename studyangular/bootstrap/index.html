@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <title>Document</title>
+</head>
+
+<body ng-controller="main">
+    <div ng-controller="AccordionDemoCtrl">
+        <script type="text/ng-template" id="group-template.html">
+            <div class="panel-heading">
+                <h4 class="panel-title" style="color:#fa39c3">
+                    <a href tabindex="0" class="accordion-toggle" ng-click="toggleOpen()" uib-accordion-transclude="heading">
+                        <span uib-accordion-header ng-class="{'text-muted': isDisabled}">
+                          {{heading}}
+                        </span>
+                      </a>
+                </h4>
+            </div>
+            <div class="panel-collapse collapse" uib-collapse="!isOpen">
+                <div class="panel-body" style="text-align: right" ng-transclude></div>
+            </div>
+        </script>
+
+        <p>
+            <button type="button" class="btn btn-default btn-sm" ng-click="status.open = !status.open">Toggle last panel</button>
+            <button type="button" class="btn btn-default btn-sm" ng-click="status.isFirstDisabled = ! status.isFirstDisabled">Enable / Disable first panel</button>
+        </p>
+
+        <div class="checkbox">
+            <label>
+                    <input type="checkbox" ng-model="oneAtATime">
+                    Open only one at a time
+                  </label>
+        </div>
+        <uib-accordion close-others="oneAtATime">
+
+            <div uib-accordion-group class="panel-default" heading="{{group.title}}" ng-repeat="group in groups">
+                {{group.content}}
+            </div>
+
+        </uib-accordion>
+    </div>
+    <div ng-controller="CarouselDemoCtrl">
+        <div style="height: 305px">
+            <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+                <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
+                    <img ng-src="{{slide.image}}" style="margin:auto;">
+                    <div class="carousel-caption">
+                        <h4>Slide {{slide.id}}</h4>
+                        <p>{{slide.text}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <button type="button" class="btn btn-info" ng-click="addSlide()">Add Slide</button>
+                <button type="button" class="btn btn-info" ng-click="randomize()">Randomize slides</button>
+                <div class="checkbox">
+                    <label>
+                    <input type="checkbox" ng-model="noWrapSlides">
+                    Disable Slide Looping
+                  </label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                Interval, in milliseconds: <input type="number" class="form-control" ng-model="myInterval">
+                <br />Enter a negative number or 0 to stop the interval.
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./js/angular.js"></script>
+<script src="./js/angular-animate.js"></script>
+<script src="./js/ui-bootstrap-tpls.js"></script>
+
+</html>
+<script>
+    // function InitZhangsan(){
+    //     if(!InitZhangsan.sref){
+    //         this.name='zhangsan'
+
+    //         InitZhangsan.sref = this;
+    //     }else{
+    //         return InitZhangsan.sref;
+    //     }
+    // }
+
+    angular.module('bootStrapApp', ['ui.bootstrap', 'ngAnimate'])
+        .controller('main', ['$scope', function ($scope) {
+            $scope.data = 'msg'
+        }])
+        .controller('AccordionDemoCtrl', function ($scope) {
+            $scope.oneAtATime = true;
+
+            $scope.groups = [
+                {
+                    title: 'Dynamic Group Header - 1',
+                    content: 'Dynamic Group Body - 1'
+                },
+                {
+                    title: 'Dynamic Group Header - 2',
+                    content: 'Dynamic Group Body - 2'
+                }
+            ];
+
+            $scope.items = ['Item 1', 'Item 2', 'Item 3'];
+
+            $scope.addItem = function () {
+                var newItemNo = $scope.items.length + 1;
+                $scope.items.push('Item ' + newItemNo);
+            };
+
+            $scope.status = {
+                isCustomHeaderOpen: false,
+                isFirstOpen: true,
+                isFirstDisabled: false
+            };
+        })
+        .controller('CarouselDemoCtrl', function ($scope) {
+            $scope.myInterval = 5000;
+            $scope.noWrapSlides = false;
+            $scope.active = 0;
+            var slides = $scope.slides = [];
+            var currIndex = 0;
+
+            $scope.addSlide = function () {
+                var newWidth = slides.length+1;
+                slides.push({
+                    image: './img/image' + newWidth + '.png',
+                    text: ['Nice image', 'Awesome photograph', 'That is so cool', 'I love that'][slides.length % 4],
+                    id: currIndex++
+                });
+            };
+
+            $scope.randomize = function () {
+                var indexes = generateIndexesArray();
+                assignNewIndexesToSlides(indexes);
+            };
+
+            for (var i = 0; i < 4; i++) {
+                $scope.addSlide();
+            }
+
+            // Randomize logic below
+
+            function assignNewIndexesToSlides(indexes) {
+                for (var i = 0, l = slides.length; i < l; i++) {
+                    slides[i].id = indexes.pop();
+                }
+            }
+
+            function generateIndexesArray() {
+                var indexes = [];
+                for (var i = 0; i < currIndex; ++i) {
+                    indexes[i] = i;
+                }
+                return shuffle(indexes);
+            }
+
+            // http://stackoverflow.com/questions/962802#962890
+            function shuffle(array) {
+                var tmp, current, top = array.length;
+
+                if (top) {
+                    while (--top) {
+                        current = Math.floor(Math.random() * (top + 1));
+                        tmp = array[current];
+                        array[current] = array[top];
+                        array[top] = tmp;
+                    }
+                }
+
+                return array;
+            }
+        });
+    angular.bootstrap(document.documentElement, ['bootStrapApp'])
+
+</script>

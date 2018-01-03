@@ -1,0 +1,167 @@
+@import 'reset.css';
+@charset 'UTF-8';
+html,body,.box{
+	width: 100%;
+	height: 100%;
+}
+body{
+	font-size: 0.16rem;
+}
+.box{
+	display: flex;
+	flex-direction: column;
+}
+header{
+	width: 100%;
+	height: auto;
+}
+.top{
+	width: 100%;
+	height: 0.84rem;
+	background: #FA828C;
+	display: flex;
+	justify-content: space-between;
+	b{
+		font-size: 0.35rem;
+		color: white;
+		line-height: 0.84rem;
+	}
+	.iconfont{
+		font-size: 0.45rem;
+		color: white;
+		line-height: 0.84rem;
+		padding-right: 0.2rem;
+	}
+}
+.bottom{
+	width: 100%;
+	height: 1.05rem;
+	background: white;
+	text-align: center;
+	line-height: 1.05rem;
+	position: relative;
+	input{
+		width: 90%;
+		height: 0.7rem;
+		text-align: center;
+		border:0.01rem solid #FA828C;
+		line-height: 0.7rem;
+		font-size: 0.35rem;
+		outline: none;
+		border-radius: 0.4rem;
+	}
+	.iconfont{
+		position: absolute;
+		left: 8%;
+		top: 0;
+		font-size: 0.45rem;
+		color: #FA828C;
+	}
+}
+main{
+	flex: 1;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+.add{
+	width: 100%;
+	height: 3.0rem;
+	.up{
+		width: 100%;
+		height: 3.0rem;
+		ul{
+			width: 100%;
+			height: 3.0rem;
+			li{
+				width: 100%;
+				height: 3.0rem;
+				img{
+					width: 100%;
+					height: 100%;
+				}
+			}
+		}
+	}
+}
+.center{
+	width: 100%;
+	height: 0.85rem;
+	border-bottom: 0.02rem solid #ccc;
+	display: flex;
+	justify-content: center;
+	ol{
+		display: flex;
+		height: 0.83rem;
+		width: 70%;
+		li{
+			flex: 1;
+			height: 0.83rem;
+			line-height: 0.83rem;
+			text-align: center;
+			font-size: 0.25rem;
+		}
+		li.bg{
+			border-bottom: 0.02rem solid #FA828C;
+		}
+	}
+}
+.down{
+	width: 100%;
+	height: auto;
+	margin-top: 0.24rem;
+	ol{
+		width: 100%;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		li{
+			width: 32%;
+			height: 2.3rem;
+			margin-top: 0.2rem;
+			img{
+				width: 100%;
+				height: 100%;
+			}
+		}
+	}
+}
+
+
+
+
+footer{
+	width: 100%;
+	height: 0.96rem;
+	
+	ul{
+		width: 100%;
+		height: 0.96rem;
+		display: flex;
+		li{
+			flex: 1;
+			.iconfont{
+				font-size: 0.45rem;
+				color: #FA828C;
+				display:block;
+				text-align: center;
+				margin-top: 0.1rem;
+			}
+			b{
+				font-size: 0.25rem;
+				color: #FA828C;
+				display:block;
+				text-align: center;
+				line-height: 0.4rem;
+			}
+		}
+		li.active{
+			background: #FA828C;
+			.iconfont{
+				color: white;
+			}
+			b{
+				color: white;
+			}
+		}
+	}
+}

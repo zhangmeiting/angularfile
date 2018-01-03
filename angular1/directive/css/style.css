@@ -1,0 +1,46 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.box{
+    margin: 20px auto;
+    width: 800px;
+    height: auto;
+}
+.box ul{
+    width:800px;
+    height: 50px;
+    display: -webkit-flex;
+}
+.box ul li{
+    flex:1;
+    text-align: center;
+    line-height: 50px;
+    background: skyblue;
+}
+.down{
+    width: 800px;
+    height: 300px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+.down dl{
+    width: 100%;
+    height: 300px;
+}
+.down dl dt{
+    line-height: 30px;
+    text-align: center;
+}
+.down dl dd{
+    width: 100%;
+    height: 270px;
+}
+.down dl dd img{
+    width: 100%;
+    height: 100%;
+}
+.box ul li.active{
+    background: limegreen;
+}

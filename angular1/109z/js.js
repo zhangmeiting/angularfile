@@ -1,0 +1,1 @@
+function one(e){for(var r=[],n=0;n<e.length;n++)-1==r.indexOf(e[n])&&r.push(e[n]);return r}function two(e){for(var r=[],n=e.length-1;n>=0;n--)-1==r.indexOf(e[n])&&r.unshift(e[n]);return r}var arrone=[1,2,3,4,3,1,5,8];console.log(one(arrone));var arrtwo=["red","orange","yellow","green","blue","purple","red","skyblue","limegreen"];console.log(two(arrtwo));

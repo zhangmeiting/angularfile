@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script src="jquery-2.1.1.min.js"></script>
+</html>
+<script>
+	$.ajax({
+		url:'http://localhost:3333/login',
+		type:'POST',
+		data:{
+			username:'zs',
+			password:'123'
+		}
+	})
+	.then(function(result){
+		console.log(result);
+	},function(error){
+		console.log(error);
+	})
+	//////npm i http-server -g
+</script>

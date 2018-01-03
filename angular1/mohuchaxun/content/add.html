@@ -1,0 +1,22 @@
+<div class="box">
+    <h2>
+        查询
+    </h2>
+    <p>产品搜索: <input type="text" ng-model="inputval"/></p>
+    <table>
+        <thead>
+        <tr>
+            <th ng-click="fn1('num')">产品编号 <b>{{par1}}</b></th>
+            <th ng-click="fn2('name')">产品名称 <b>{{par2}}</b></th>
+            <th ng-click="fn3('price')">产品价钱 <b>{{par3}}</b></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="value in val | orderBy : item : bools | filter:inputval">
+            <td>{{value.num}}</td>
+            <td>{{value.name}}</td>
+            <td>￥ {{value.price}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

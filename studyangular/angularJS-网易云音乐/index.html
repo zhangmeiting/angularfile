@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5, minimum-scale=0.5, maximum-scale=0.5,user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/iconfont.css">
+    <link rel="stylesheet" href="./css/ionic.css">
+    <script src="./js/rem.js"></script>
+    <script>
+        rem(3.6);
+    </script>
+    <style>
+        p,dl,dt,dd{
+            margin:0;
+            padding:0;
+        }
+        body{
+            font-size: .24rem;
+        }
+        header{
+            display: flex;
+            background: #cd3d3d;
+            height: 1.1rem;
+        }
+        .myitem{
+            flex: 1.58;
+            line-height: 1.1rem;
+            text-align: center;
+            font-size: .5rem;
+            color:#e28f89
+        }
+        .active{
+            color: white;
+        }
+        .gap{
+            flex: 1
+        }
+        .right{
+            flex: 1.63;
+            line-height: 1.1rem;
+            text-align: center;
+            font-size: .5rem;
+            color:white;
+        }
+        .left{
+            flex: 1.63;
+            line-height: 1.1rem;
+            text-align: center;
+            font-size: .5rem;
+            color:white;
+        }
+        .footer{
+            position: fixed;
+            display: flex;
+            left: 0;
+            bottom: 0;
+            height: .98rem;
+            width: 100%;
+        }
+        .footer-left{
+            flex:7.5;
+            height:.98rem;
+        }
+        .footer-right{
+            flex:2.5;
+            height:.98rem;
+            display: flex;
+        }
+        .songIcon{
+            width: .8rem;
+            height: .8rem;
+            background:blue;
+            margin:0 auto;
+        }
+        .footer-left .dl{
+            display: flex;
+            height: 100%;
+        }
+        .footer-left .dt{
+            padding: .09rem 0;
+            flex: 2;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        .footer-left .dd{
+            flex: 8;
+            height: 100%;
+        }
+        .songName{
+            line-height:.62rem;
+            color:#333333;
+            font-size:.3rem;
+        }
+        .singerName{
+            height: .36rem;
+            color:#888888;
+            font-size:.18rem;
+        }
+        .playOrStop{
+            line-height: .98rem;
+            flex: 5.55;
+            text-align:center;
+            font-size:.62rem;
+            color:#cc3a3d;
+        }
+        .next{
+            line-height: .98rem;
+            flex:4.45;
+            text-align:center;
+            font-size:.62rem;
+            color:#cc3a3d;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body ng-controller="main">
+    <header>
+        <div class="left iconfont icon-lisimoshicaidandaohang"></div>
+        <div class="gap"></div>
+        <div class="myitem iconfont icon-wangyiyunyinlezizhi-copy" ui-sref="discoverMusic" ui-sref-active="active"></div>
+        <div class="myitem iconfont icon-yinle1" ui-sref="musicList" ui-sref-active="active"></div>
+        <div class="myitem iconfont icon-yonghuzu" ui-sref="friend" ui-sref-active="active"></div>
+        <div class="gap"></div>
+        <div class="right iconfont icon-sousuo_sousuo"></div>
+    </header>
+    <main>
+        <ui-view></ui-view>
+    </main>    
+    <footer class="footer">
+        <div class="footer-left">
+            <div class="dl">
+                <div class="dt">
+                    <img class="songIcon" ng-src="" alt="">
+                </div>
+                <div class="dd">
+                    <p class="songName">夜曲</p>
+                    <p class="singerName">周杰伦</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-right">
+            <div class="playOrStop iconfont icon-bofang"></div>
+            <div class="next iconfont icon-quanjuxiayiqu"></div>
+        </div>
+    </footer>
+</body>
+    <script src="./js/angular1.3.3.js"></script>
+    <script src="./js/angular-ui-router.js"></script>
+    <script src="./js/ionic.bundle.js"></script>
+    <script src="./js/ionic.js"></script>
+    <script src="./js/ionic-angular.js"></script>
+</html>
+<script>
+    angular.module('app',['ui.router','ionic'])
+           .config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
+
+                $urlRouterProvider.otherwise('/discoverMusic')
+                $urlRouterProvider.when('/discoverMusic','/discoverMusic/recommendation')
+                $stateProvider.state('discoverMusic',{
+                    url:'/discoverMusic',
+                    templateUrl:'./template/discoverMusic.html',
+                    controller:[function(){
+                        
+                    }]
+                })
+                .state('musicList',{
+                    url:'/musicList',
+                    templateUrl:'./template/musicList.html',
+                    controller:[function(){
+                        
+                    }]
+                })
+                .state('friend',{
+                    url:'/friend',
+                    templateUrl:'./template/friend.html',
+                    controller:[function(){
+                        
+                    }]
+                })
+                .state('discoverMusic.recommendation',{
+                    url:'/recommendation',
+                    templateUrl:'./template/discoverMusic/recommendation.html',
+                    controller:['$ionicSlideBoxDelegate','$scope',function($ionicSlideBoxDelegate,$scope){
+                        $scope.goTo = function(index){
+                            $ionicSlideBoxDelegate.slide(index, [2000])
+                        }
+                        $scope.imgArr = ['./img/banner1.jpg','./img/banner2.jpg','./img/banner3.jpg','./img/banner4.jpg']
+                    }]
+                })
+                .state('discoverMusic.songList',{
+                    url:'/songList',
+                    templateUrl:'./template/discoverMusic/songList.html',
+                    controller:[function(){
+                        
+                    }]
+                })
+                .state('discoverMusic.broadStation',{
+                    url:'/broadStation',
+                    templateUrl:'./template/discoverMusic/broadStation.html',
+                    controller:[function(){
+                        
+                    }]
+                })
+                .state('discoverMusic.rank',{
+                    url:'/rank',
+                    templateUrl:'./template/discoverMusic/rank.html',
+                    controller:[function(){
+                        
+                    }]
+                })
+
+           }])
+           .controller('main',['$scope',function($scope){
+
+           }])
+</script>

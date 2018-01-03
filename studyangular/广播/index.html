@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-controller="main">
+	<div ng-controller="aa">
+		{{aa}}
+	</div>
+	<div ng-controller="bb">
+		{{bb}}
+	</div>
+</body>
+<script src="ng.js"></script>
+</html>
+<script>
+	angular.module('app',[])
+			.controller('main',['$scope',function($scope){
+				$scope.main='mainmain';
+				$scope.$on('emit',function(event,data){
+					$scope.$broadcast('broadcast',data);
+				})
+			}])
+			.controller('aa',function($scope){
+				$scope.aa='aaaa';
+				$scope.$on('broadcast',function(event,dataa){
+					$scope.aa=dataa;
+				})
+			})
+			.controller('bb',function($scope,$timeout){
+				$scope.bb='bbbb';
+				$timeout(function(){
+					$scope.$emit('emit',$scope.bb);
+				},3000)
+			})
+</script>

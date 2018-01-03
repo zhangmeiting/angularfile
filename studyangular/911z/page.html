@@ -1,0 +1,37 @@
+<div>
+	<style>
+		
+		.active{
+			background: red;
+		}
+		.normal{
+			background: orange;
+		}
+	</style>
+	
+	
+	<div class="top" ng-repeat="item in data" ng-class="value==item.name? 'active':'normal'" ng-click="fn(item.value)">
+		<div class="button">
+			{{item.page}}
+		</div>	
+	</div>
+	<div class="content" ng-init="data[0].value">
+		<!-- <table>
+			<tr>
+				<th>序号</th>
+				<th>姓名</th>
+				<th>性别</th>
+				<th>号码</th>
+				<th>地址</th>
+			</tr>
+			<tr>
+				<td>
+					{{val}}
+				</td>
+			</tr>
+		</table> -->
+		<div ng-repeat="val in value" style="text-align: center;">
+			{{val}}
+		</div>
+	</div>
+</div>

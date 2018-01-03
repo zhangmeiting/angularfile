@@ -1,0 +1,61 @@
+app.controller('main',['$scope','$stateParams','adds',function($scope,$stateParams,adds){
+				adds.gets().then(function(res){
+					$scope.val=res.data;
+				});
+
+				$scope.bools1='';
+				$scope.bools2='';
+				$scope.bools3='';
+				$scope.bools4='dlbg';
+				$scope.bools5='';
+				$scope.fn1=function(){
+					$scope.bools1='dlbg';
+					$scope.bools2='';
+					$scope.bools3='';
+					$scope.bools4='';
+					$scope.bools5='';
+				}
+				$scope.fn2=function(){
+					$scope.bools1='';
+					$scope.bools2='dlbg';
+					$scope.bools3='';
+					$scope.bools4='';
+					$scope.bools5='';
+				}
+				$scope.fn3=function(){
+					$scope.bools1='';
+					$scope.bools2='';
+					$scope.bools3='dlbg';
+					$scope.bools4='';
+					$scope.bools5='';
+				}
+				$scope.fn4=function(){
+					$scope.bools1='';
+					$scope.bools2='';
+					$scope.bools3='';
+					$scope.bools4='dlbg';
+					$scope.bools5='';
+				}
+				$scope.fn5=function(){
+					$scope.bools1='';
+					$scope.bools2='';
+					$scope.bools3='';
+					$scope.bools4='';
+					$scope.bools5='dlbg';
+				}
+
+}]);
+app.config(function($stateProvider,$urlRouterProvider){
+	$stateProvider
+		.state('one',{
+			url:'/one',
+			templateUrl:'view/view1.html',
+			controller:'main'
+		})
+		.state('two',{
+			url:'/two',
+			templateUrl:'view/two.html',
+			controller:'main'
+		});
+	$urlRouterProvider.otherwise('one');
+})

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.bg1{
+			background: red;
+			width: 100px;
+			height: 100px;
+		}
+		.bg2{
+			background: orange;
+			width: 100px;
+			height: 100px;
+		}
+	</style>
+</head>
+<body ng-controller="main">
+	<input type="text" ng-model="msg">
+	<p>{{msg}}</p><!-- 做绑定的 -->
+	<p ng-bind="msg"></p>
+	<button ng-click="fn()">onclick</button>
+	<!-- <button onclick="fn()">click</button> -->
+	<button ng-click="fn1()">click</button>
+	<div ng-class="name"></div>
+	<div ng-style="{background:value ? 'blue' : 'green'}">内容</div>
+	<input ng-model="value" ng-init="value=100">
+	<div ng-if="msg">ng-if</div>
+		<div ng-show="true">ng-show</div>
+			<div ng-hide="false">ng-hide</div>
+			<div ng-repeat="val in [1,2,3,4]">
+				{{val}}
+			</div>
+			<img ng-src="{{path}}">
+			<!-- <img src="{{path}}"> -->
+</body>
+<script src="angular.min.js"></script>
+</html>
+<script>
+	function fn(){
+		console.log('click1111111');
+	}
+	/////////ng-app 是一个规定angularjs在网页上的
+	///哪个元素内生效的指令 你可以把它绑定在任何
+	///元素上
+	///写好ng-app之后就可以写其他的指令了 不然其他的指令不生效 view的范围
+	///ng-controller 规定控制器的范围
+	angular.module('app',[])////第一个angular 
+	////module定义的模块 第一个参数是模块名 
+	///第二个参数是依赖注入
+		.controller('main',['$scope',function($scope){
+					$scope.msg='world';
+					$scope.fn=function(){
+						console.log('clickclickclick');
+					}
+					$scope.fn1=function(){
+						if($scope.name=='bg1'){
+							$scope.name='bg2';
+							$scope.path='./2.jpg';
+						}else{
+							$scope.name='bg1';
+							$scope.path='./1.jpg';
+						}
+						
+						// $scope.fn=function(){
+						// 	console.log('change');
+						// }
+					}
+					$scope.name='bg1';
+					$scope.path='./1.jpg';
+					////第一个内置服务$scope 他就是我们的model
+					///////第一个参数是控制器名称 第二个参数是回掉函数 在这个函数里面实现
+					///控制器
+				}])////////mvc里面的controller(狭义的)
+</script>

@@ -1,0 +1,42 @@
+@import url(reset.css);
+html, body, .box {
+  width: 100%;
+  height: 100%; }
+
+body {
+  font-size: 0.16rem; }
+
+.box {
+  display: flex;
+  flex-direction: column; }
+
+header {
+  width: 100%;
+  height: 0.5rem;
+  background: purple; }
+  header h5 {
+    font-size: 0.2rem;
+    line-height: 0.5rem;
+    color: white;
+    text-align: center; }
+
+main {
+  flex: 1;
+  overflow-y: auto; }
+  main ul {
+    width: 100%;
+    height: 1rem;
+    display: flex; }
+    main ul li {
+      flex: 1; }
+      main ul li i {
+        width: 100%;
+        height: 100%;
+        display: inline-block; }
+      main ul li .iconfont {
+        line-height: 1rem;
+        text-align: center;
+        font-size: 0.5rem;
+        color: #000066; }
+
+/*# sourceMappingURL=style.css.map */

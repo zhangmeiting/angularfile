@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='app'>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		.box{
+			width: 400px;
+			height: auto;
+			display: flex;
+			margin: 30px auto;
+		}
+		.box dl{
+			flex: 1;
+		}
+		.box dl dt{
+			width: 50px;
+			height: 50px;
+			line-height: 50px;
+			background: #eee;
+			border-radius: 100%;
+		}
+		.box dl dt.bg{
+			background: red;
+		}
+		.box dl dd{
+			font-size: 14px;
+			color: #ccc;
+			line-height: 30px;
+			height: 30px;
+		}
+		p{
+			margin: 10px 40px;
+		}
+		p span{
+			display:block;
+			width: 200px;
+			height: 2px;
+			background: #ddd;
+		}
+		@keyframes slide{
+			0%{
+				width:0px;
+			}
+			100%{
+				width: 200px;
+			}
+		}
+		p span b{
+			display: block;
+			width: 0px;
+			height: 2px;
+			background: red;
+			animation: slide 2s linear infinite;
+		}
+	</style>
+</head>
+<body ng-controller='main'>
+	<p><span><b></b></span>   100%</p>
+	<div class="box">
+		
+		<dl>
+			<dt ng-click='fn1()' ng-class='bools1'></dt>
+			<dd>资产发布</dd>
+		</dl>
+		<dl>
+			<dt ng-click='fn2()' ng-class='bools2'></dt>
+			<dd>投资计息</dd>
+		</dl>
+		<dl>
+			<dt ng-click='fn3()' ng-class='bools3'></dt>
+			<dd>进入收益期</dd>
+		</dl>
+		<dl>
+			<dt ng-click='fn4()' ng-class='bools4'></dt>
+			<dd>到期退出</dd>
+		</dl>
+	</div>
+</body>
+<script src="angular.min.js"></script>
+</html>
+<script>
+	angular.module('app',[])
+			.controller('main',function($scope){
+				$scope.val=false;
+				$scope.bools1='';
+				$scope.fn1=function(){
+					$scope.val=!$scope.val;
+					if($scope.val){
+						$scope.bools1='';
+					}else{
+						$scope.bools1='bg';
+					}
+				}
+				$scope.val2=false;
+				$scope.bools2='';
+				$scope.fn2=function(){
+					$scope.val2=!$scope.val2;
+					if($scope.val2){
+						$scope.bools2='';
+					}else{
+						$scope.bools2='bg';
+					}
+				}
+				$scope.val3=false;
+				$scope.bools3='';
+				$scope.fn3=function(){
+					$scope.val3=!$scope.val3;
+					if($scope.val3){
+					
+						$scope.bools3='';
+					}else{
+						$scope.bools3='bg';
+					}
+				}
+				$scope.val4=false;
+				$scope.bools4='';
+				$scope.fn4=function(){
+					$scope.val4=!$scope.val4;
+					if($scope.val4){
+						$scope.bools4='';
+					}else{
+						$scope.bools4='bg';
+					}
+				}
+			})
+</script>

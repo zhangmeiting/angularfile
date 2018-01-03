@@ -1,0 +1,100 @@
+@import url(reset.css);
+html, body, .box {
+  width: 100%;
+  height: 100%; }
+
+.box {
+  display: flex;
+  flex-direction: column; }
+
+header {
+  width: 100%;
+  height: 0.45rem;
+  line-height: 0.45rem;
+  border-top: 0.02rem solid green;
+  border-bottom: 0.02rem solid #ddd;
+  display: flex;
+  justify-content: space-between; }
+  header i.iconfont {
+    font-size: 0.2rem;
+    padding: 0 0.27rem; }
+  header b {
+    font-size: 0.14rem; }
+
+main {
+  flex: 1;
+  overflow-y: auto; }
+  main .top {
+    width: 100%;
+    height: 0.45rem;
+    margin-top: 0.3rem; }
+    main .top ul {
+      width: 100%;
+      height: 0.43rem;
+      display: flex;
+      border-bottom: 1px solid #ddd; }
+      main .top ul li {
+        flex: 1;
+        text-align: center;
+        line-height: 0.43rem;
+        color: green;
+        font-size: 0.14rem; }
+      main .top ul li.hv {
+        color: black;
+        border: 0.01rem solid #ddd;
+        border-bottom: none; }
+  main .bottom {
+    height: auto; }
+    main .bottom dl {
+      width: 100%;
+      height: 0.7rem;
+      border-bottom: 0.01rem solid #ddd;
+      display: flex;
+      align-items: center; }
+      main .bottom dl dt {
+        width: 0.5rem;
+        height: 0.5rem;
+        line-height: 0.5rem;
+        font-size: 0.14rem;
+        color: white;
+        margin: 0 0.2rem;
+        background: red;
+        text-align: center; }
+      main .bottom dl dd p {
+        font-size: 0.14rem;
+        line-height: 0.2rem;
+        color: #ccc; }
+      main .bottom dl dd h6 {
+        font-size: 0.16rem;
+        line-height: 0.2rem;
+        color: #000; }
+    main .bottom dl.bg dt i {
+      color: green; }
+    main .bottom dl.bg dd {
+      color: green; }
+
+footer {
+  width: 100%;
+  height: 0.5rem;
+  border-bottom: 0.01rem solid #ddd; }
+  footer .footer {
+    height: 0.5rem;
+    display: flex; }
+    footer .footer dl {
+      flex: 1; }
+      footer .footer dl dt {
+        text-align: center;
+        line-height: 0.3rem; }
+        footer .footer dl dt i.iconfont {
+          font-size: 0.2rem;
+          text-align: center; }
+      footer .footer dl dd {
+        text-align: center;
+        font-size: 0.12rem;
+        line-height: 0.1rem; }
+    footer .footer dl.bg dt i {
+      color: green; }
+    footer .footer dl.bg dd {
+      color: green; }
+
+/*# sourceMappingURL=style.css.map */

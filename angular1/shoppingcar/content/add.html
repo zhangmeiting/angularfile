@@ -1,0 +1,30 @@
+<table>
+    <!--<div class="slide">-->
+        <!--<h2><h4></h4></h2>-->
+        <!--<button></button><button></button>-->
+    <!--</div>-->
+    <tr ng-repeat="val in val">
+        <td><small ng-class="{hv:val.status}" ng-click="clicks($index)"></small></td>
+        <td><p><img ng-src="{{val.src}}" alt=""/></p></td>
+        <td>
+            <h5 ng-click="index($index)">{{val.com}}</h5>
+            <!--<div>-->
+                <!--<input type="radio" name="pri" class="radio1">满2件总价8.5折-->
+                <!--<br>-->
+                <!--<input type="radio" name="pri">不使用活动优惠-->
+                <!--<button class="btn1">确定</button><button class="btn2">取消</button>-->
+            <!--</div>-->
+        </td>
+        <td>单价:<strong>{{val.price}}</strong></td>
+        <td><em class="dec" ng-click="cons('-')">-</em><span>{{val.num}}</span><em class="add" ng-click="cons('+')">+</em></td>
+        <!--<td>总价:<b>{{val.addup}}</b></td>-->
+    </tr>
+    <tr>
+        <td><small ng-class="{hv:flag}" ng-click="clickall()"></small></td>
+        <td colspan="2">共选择<i class="things">{{counts}}</i>件商品</td>
+        <td colspan="2">总价格:<i class="price">{{prices}}</i>元</td>
+        <td>共节省:<i class="yuan">0</i>元</td>
+        <td><h6 class="ince">去结算</h6></td>
+
+    </tr>
+</table>

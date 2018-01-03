@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body ng-controller="main">
+    {{data.value}}
+</body>
+    <script src="./js/angular.min.js"></script>
+</html>
+<script>
+    angular.module('app',[])
+           .controller('main',['$scope','$ajax',function($scope,$ajax){
+
+              $scope.data =  $ajax.post({
+                  url:'http://localhost:3333/login',
+                  data:{
+                      userName:'zhangsan',
+                      password:123456
+                  }
+              })
+    
+           }])
+           .provider('$ajax',function(){
+
+                return {
+                    $get:['$http','$q',function($http,$q){
+
+                    function ajax(obj) {
+                        var defer = $q.defer();
+                        if(typeof obj == 'object'){
+                            if('data' in obj){
+                            if(typeof obj.data == 'object') {
+
+                                var str = '';
+
+                                for(var key in obj.data){
+                                    str += key+'='+obj.data['key']+'&';
+                                }
+
+                                str = str.substring(0,-1);
+
+                                }
+
+                                obj.data = str;
+                            }
+                        }
+
+                        $http(obj).then(function(result){
+                            
+                            defer.resolve(result.data);
+
+                        },function(error){
+
+                            defer.reject(error)
+
+                        });
+
+                        return defer.promise.$$state;
+
+                    }    
+                    ajax.get = function(url){
+
+                        var defer = $q.defer(); //新建一个deffer 对象 处于 等待 状态
+
+                        $http.get(url).then(function(result){
+
+                            defer.resolve(result.data);  // 由等待状态 变成 已解决 状态
+
+                        },function(error){
+                        
+                            defer.reject(error)  //由等待状态 变成 已失败
+                        })
+
+                        return defer.promise.$$state;
+                    }
+
+                    // ajax.post = function(obj){
+
+                    //     if(typeof obj == 'object'){
+                    //         if('data' in obj){
+                    //         if(typeof obj.data == 'object') {
+
+                    //             var str = '';
+
+                    //             for(var key in obj.data){
+                    //                 str += key+'='+obj.data['key']+'&';
+                    //             }
+
+                    //             str = str.substring(0,-1);
+
+                    //             }
+
+                    //             obj.data = str;
+                    //         }
+                    //     }
+
+                    //     var defer = $q.defer()
+                    //     if(typeof obj == 'object'){
+
+                    //         obj['method'] = 'POST';
+
+                    //         $http(obj).then(function(result){
+                    //             console.log(result)
+                    //             defer.resolve(result.data);
+
+                    //         },function(error){
+
+                    //             defer.reject(error)
+
+                    //         })
+
+                    //     }else if(typeof obj == 'string'){
+
+                    //         // $http({url:obj})
+                            
+                    //         $http.post(obj).then(function(result){
+
+                    //             defer.resolve(result.data);
+
+                    //         },function(error){
+
+                    //             defer.reject(error)
+
+                    //         })
+
+                            
+
+                    //     }
+                    //     return defer.promise.$$state;
+
+                    // }
+
+                        return new function(){
+                            return ajax;
+                        }
+                    }]
+                }
+           })
+</script>

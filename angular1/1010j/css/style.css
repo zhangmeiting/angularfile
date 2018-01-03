@@ -1,0 +1,79 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background: #F7F7F7; }
+
+body {
+  font-size: 0.16rem; }
+
+header {
+  width: 100%;
+  height: auto; }
+  header ul {
+    width: 100%; }
+    header ul li {
+      height: 0.5rem;
+      line-height: 0.5rem;
+      text-indent: 0.15rem;
+      border-bottom: 0.02rem solid #ccc;
+      font-size: 0.14rem;
+      background: white; }
+      header ul li input {
+        outline: none;
+        border: none;
+        height: 0.5rem;
+        line-height: 0.5rem;
+        font-size: 0.14rem;
+        color: gray; }
+      header ul li button {
+        outline: none;
+        border: none;
+        display: inline-block;
+        padding: 0.03rem 0.05rem;
+        border-radius: 0.08rem;
+        line-height: 0.3rem;
+        font-size: 0.14rem;
+        color: white;
+        background: deeppink; }
+    header ul li.bg {
+      background: #eeeeee;
+      border-bottom: none;
+      color: red; }
+  header p {
+    width: 100%;
+    text-align: center; }
+    header p button {
+      width: 80%;
+      height: 0.4rem;
+      line-height: 0.4rem;
+      font-size: 0.14rem;
+      color: white;
+      background: deeppink;
+      outline: none;
+      border: none;
+      margin-top: 0.3rem;
+      border-radius: 0.08rem; }
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0; }
+  footer ol {
+    width: 100%;
+    height: 0.4rem;
+    display: flex;
+    background: white; }
+    footer ol li {
+      width: 25%;
+      height: 0.4rem;
+      font-size: 0.16rem;
+      color: gray;
+      line-height: 0.4rem;
+      text-align: center; }
+
+/*# sourceMappingURL=style.css.map */

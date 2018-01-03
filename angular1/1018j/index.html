@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='app'>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
+	<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<meta name="format-detection" content="telphone=no, email=no" >
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			text-decoration: none;
+			color: black;
+		}
+		html,body,.box{
+			width: 100%;
+			height: 100%;
+		}
+		.box{
+			display: flex;
+			flex-direction: column;
+		}
+		header{
+			width: 100%;
+			height:50px;
+			line-height: 50px;
+			text-align: center;
+		}
+		main{
+			flex: 1;
+			overflow-y: auto;
+		}
+		.top{
+			width: 100%;
+			height: 50px;
+		}
+		.top ul{
+			width: 100%;
+			height: 100%;
+			display: flex;
+		}
+		.top ul li{
+			flex: 1;
+			text-align: center;
+			line-height:48px;
+			height: 48px;
+		}
+		.top ul li.bg{
+			border-bottom: 2px solid blue;
+		}
+		.top ul li.bg a{
+			color:blue;
+		}
+		.bottom{
+			width: 100%;
+			height: auto;
+		}
+		.bottom dl{
+			width: 100%;
+			height: 230px;
+		}
+		.bottom dl dt{
+			height: 200px;
+		}
+		.bottom dl dt img{
+			width: 100%;
+			height: 100%;
+		}
+		.bottom dl dd{
+			height: 30px;
+			text-align: center;
+			line-height:30px;
+			font-size: 20px;
+			color: orange;
+		}
+	</style>
+</head>
+<body ng-controller="main">
+	<div class="box">
+		<header>
+			<b>我的一元夺宝</b>
+		</header>
+		<main>
+			<div class="top">
+				<ul>
+					<li ng-click="fn1()" ng-class="val1" class="bg">
+						<a href="#!/one">进行中</a>
+					</li>
+					<li ng-click="fn2()" ng-class="val2">
+						<a href="#!/two">已揭晓</a>
+					</li>
+					<li ng-click="fn3()" ng-class="val3">
+						<a href="#!/three">已中奖</a>
+					</li>
+				</ul>
+			</div>
+			<div class="bottom">
+				<ng-view></ng-view>
+			</div>
+		</main>
+	</div>
+</body>
+<script src="js/angular.min.js"></script>
+<script src="js/angular-route.min.js"></script>
+</html>
+<script>
+	angular.module('app',['ngRoute'])
+			.controller('main',['$scope',function($scope){
+				$scope.fn1=function(){
+					$scope.val1='bg';
+					$scope.val2='';
+					$scope.val3='';
+				}
+
+
+
+				$scope.fn2=function(){
+					$scope.val1='';
+					$scope.val2='bg';
+					$scope.val3='';
+				}
+
+
+				$scope.fn3=function(){
+					$scope.val1='';
+					$scope.val2='';
+					$scope.val3='bg';
+				}
+			}])
+			.config(function($routeProvider){
+				$routeProvider
+					.when('/one',{
+						templateUrl:'one.html',
+						controller:'main'
+					})
+					.when('/two',{
+						templateUrl:'two.html',
+						controller:'main'
+					})
+					.when('/three',{
+						templateUrl:'three.html',
+						controller:'main'
+					})
+					.otherwise({
+						redirectTo:'/one'
+					})
+			})
+</script>

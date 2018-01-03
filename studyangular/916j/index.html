@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
+	<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<meta name="format-detection" content="telphone=no, email=no" >
+	<link rel="stylesheet" href="css/style.css">
+	<title>Document</title>
+	<script>
+		document.documentElement.style.fontSize=window.innerWidth/375*50+'px';
+	</script>
+</head>
+<body ng-controller="main">
+	<div class="box">
+		<header>交易明细</header>
+		<main>
+			<div class="up">
+				<ul>
+					
+					<li><a href="#!/all" ng-class="path=='/all'?'bg':''">全部</a></li>
+					<li><a href="#!/out" ng-class="path=='/out'?'bg':''">支出</a></li>
+					<li><a href="#!/in" ng-class="path=='/in'?'bg':''">收入</a></li>
+					
+				</ul>
+				
+			</div>
+			<ng-view></ng-view>
+			<div class="down">
+				<!-- <div class="add" ng-repeat="item in data">
+					<dl>
+						<dt>支出</dt>
+						<dd>
+							<p class="ps">项目支持</p>
+							<p>《心里的声音》</p>
+						</dd>
+					</dl>
+					<ol>
+						<li class="lis">1,000元</li>
+						<li>2016-01-01 12:12</li>
+					</ol>
+					<dl>
+						<dt>{{item.title}}</dt>
+						<dd>
+							<p class="ps">{{item.item}}</p>
+							<p>{{item.con}}</p>
+						</dd>
+					</dl>
+					<ol>
+						<li class="lis">{{item.num}}</li>
+						<li>{{item.time}}</li>
+					</ol>
+				</div> -->
+			</div>
+		</main>
+	</div>
+
+</body>
+<script src="angular.min.js"></script>
+<script src="angular.js"></script>
+<script src="angular-route.js"></script>
+</html>
+<script>
+	angular.module('app',['ngRoute'])
+			
+			.config(['$routeProvider',function($routeProvider){
+				$routeProvider.when('/all',{
+					template:`
+						<div class="add" ng-repeat="item in data.all">
+							<dl>
+								<dt>{{item.title}}</dt>
+								<dd>
+									<p class="ps">{{item.item}}</p>
+									<p>{{item.con}}</p>
+								</dd>
+							</dl>
+							<ol>
+								<li class="lis">{{item.num}}</li>
+								<li>{{item.time}}</li>
+							</ol>
+							
+						</div>
+					
+					`,
+					controller:['$scope',function($scope){
+
+					}]
+				}).when('/out',{
+					template:`
+						<div class="add" ng-repeat="item in data.out">
+							<dl>
+								<dt>{{item.title}}</dt>
+								<dd>
+									<p class="ps">{{item.item}}</p>
+									<p>{{item.con}}</p>
+								</dd>
+							</dl>
+							<ol>
+								<li class="lis">{{item.num}}</li>
+								<li>{{item.time}}</li>
+							</ol>
+							
+						</div>
+					
+					`,
+					controller:['$scope',function($scope){
+						
+					}]
+				}).when('/in',{
+					template:`
+						<div class="add" ng-repeat="item in data.in">
+							<dl>
+								<dt>{{item.title}}</dt>
+								<dd>
+									<p class="ps">{{item.item}}</p>
+									<p>{{item.con}}</p>
+								</dd>
+							</dl>
+							<ol>
+								<li class="lis">{{item.num}}</li>
+								<li>{{item.time}}</li>
+							</ol>
+							
+						</div>
+					
+					`,
+					controller:['$scope',function($scope){
+
+					}]
+				}).otherwise('/in')
+			}])
+			.controller('main',['$scope',function($scope){
+				$scope.data={
+					all:[
+						{
+							title:'支出',
+							item:'项目支持',
+							con:'《心里的声音》',
+							num:'1,000元',
+							time:'2016-01-01 12:12'
+						},
+						{
+							title:'收入',
+							item:'项目支持',
+							con:'《心里的声音》',
+							num:'1,000元',
+							time:'2016-01-01 12:12'
+						}
+					],
+					out:[
+						{
+							title:'支出',
+							item:'项目支持',
+							con:'《心里的声音》',
+							num:'1,000元',
+							time:'2016-01-01 12:12'
+						}
+					],
+					in:[
+						{
+							title:'收入',
+							item:'项目支持',
+							con:'《心里的声音》',
+							num:'1,000元',
+							time:'2016-01-01 12:12'
+						}
+					]
+				}
+			}])
+			.run(['$rootScope',function($rootScope){
+				$rootScope.$on('$routeChangeSuccess',function(event,currentRoute,previousRoute){
+					console.log('successs');
+					$rootScope.path=currentRoute.$$route.originalPath;
+				})
+			}])
+</script>

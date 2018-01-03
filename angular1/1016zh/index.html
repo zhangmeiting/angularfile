@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-controller="main">
+		{{valss}}
+	<div class="box">
+		<!--<add></add>-->
+	</div>
+</body>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/angular.min.js"></script>
+</html>
+<script>
+//	$.ajax({
+//		url:'http://localhost:8090/index.html?one'
+//	}).then(function(res){
+//		valss=res.data.data;
+//		console.log(valss);
+//	},function(err){
+//		console.log(err);
+//	})
+
+
+
+//var param;
+//var xml=new XMLHttpRequest();
+//xml.open('get','http://localhost:8090/index.html?one');
+//xml.send(null);
+//xml.onreadystatechange=function(){
+//	if(xml.readyState==4 && xml.status==200){
+//		console.log(JSON.parse(xml.responseText).data);
+//		param=JSON.parse(xml.responseText).data;
+//		//console.log(JSON.parse(param));
+//
+//	}
+//}
+
+
+
+angular.module('app',[])
+			.controller('main',['$scope','$http',function($scope,$http){
+//				$http({
+//					url:'http://localhost:8090/index.html?one',
+//				}).then(function(res){
+//					$scope.valss=res.data.data;
+//					console.log($scope.valss);
+//				},function(err){
+//					console.log(err);
+//				})
+//				$.ajax({
+//					url:'http://localhost:8090/index.html?one',
+//					success:function(res){
+//						$scope.valss=res.data.data;
+//						console.log($scope.valss);
+//					},
+//					error:function(err){
+//						console.log(err);
+//					}
+//				})
+
+			var param;
+var xml=new XMLHttpRequest();
+xml.open('get','http://localhost:8090/index.html?one');
+xml.send(null);
+xml.onreadystatechange=function(){
+	if(xml.readyState==4 && xml.status==200){
+		console.log(JSON.parse(xml.responseText).data);
+		param=JSON.parse(xml.responseText).data;
+		console.log(JSON.parse(param));
+		$scope.valss=param;
+
+	}
+}
+
+
+
+		}])
+			.directive('add',function(){
+				return {
+					restrict:'ECMA',
+					templateUrl:'add.html',
+					controller:'main',
+					link:function(scope,ele,attr,controller){
+
+					}
+				}
+			})
+</script>

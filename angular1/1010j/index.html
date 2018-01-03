@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <script>
+        document.documentElement.style.fontSize=window.innerWidth/320*100+'px';
+    </script>
+</head>
+<body ng-controller="main">
+    <adds></adds>
+</body>
+<script src="angular.min.js"></script>
+</html>
+<script>
+    angular.module('app',[])
+            .controller('main',function($scope){
+
+            })
+            .directive('adds',function(){
+                return {
+                    restrict:'ECMA',
+                    templateUrl:'add.html',
+                    controller:function($scope){
+                        $scope.val='111';
+                    },
+                    link:function(scope,ele,attr,controller){
+
+                    }
+                }
+            })
+</script>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-controller="main">
+	<p>
+		<textarea name="" id="" cols="30" rows="10" ng-model="txt"></textarea>
+		<span ng-style="color()">{{txt.length}}/140字</span>
+	</p>
+	<p>
+		<input type="button" value="publish" ng-disabled="txt.length>20">
+	<input type="button" value="clean" ng-click="reset()" ng-disabled="txt.length == 0">
+	</p>
+</body>
+<script src="angular.min.js"></script>
+</html>
+<script>
+	angular.module('app',[])
+			.controller('main',['$scope',function($scope){
+				$scope.txt='';
+				$scope.color=function(){
+					return $scope.txt.length>=10?{"color":"red"} : {"color":"black"}
+				}
+				$scope.reset=function(){
+					$scope.txt='';
+				}
+			}])
+</script>

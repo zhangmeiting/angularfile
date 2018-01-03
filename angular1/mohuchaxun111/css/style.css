@@ -1,0 +1,53 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.box{
+    margin: 30px auto;
+    width: 800px;
+    height: auto;
+}
+.box h2{
+    width: 100%;
+    margin: 10px 0;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+}
+.box p{
+    width: 100%;
+    margin: 10px 0;
+    height:40px;
+    line-height: 40px;
+}
+.box p input{
+    width: 600px;
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+}
+.box table{
+    width: 100%;
+    margin: 10px 0;
+    height: auto;
+    border: 1px solid #ccc;
+}
+.box table tr {
+    display: flex;
+}
+.box table tr th{
+     height: 40px;
+     line-height: 40px;
+     text-align: center;
+     flex: 1;
+ }
+.box table tr td{
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    flex: 1;
+    border-top: 1px solid #ccc;
+}

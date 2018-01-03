@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='app'>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
+	<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<meta name="format-detection" content="telphone=no, email=no" >
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="fonts/iconfont.css">
+	<script>
+		document.documentElement.style.fontSize=window.innerWidth/320*100+'px';
+	</script>
+	<title>Document</title>
+</head>
+<body ng-controller="main">
+	<div class="box">
+		<main>
+			<p>
+				<ui-view></ui-view>
+			</p>
+		</main>
+		<footer>
+			<i class="iconfont" ui-sref="one">&#xe659;</i>
+			<i class="iconfont" ui-sref="two">&#xe64c;</i>
+			<i class="iconfont" ui-sref="three">&#xe65d;</i>
+		</footer>
+	</div>
+</body>
+<script src="angular.min.js"></script>
+<script src="angular-ui-router.js"></script>
+</html>
+<script>
+	angular.module('app',['ui.router'])
+			.controller('main',function(){
+
+			})
+			.config(function($stateProvider,$urlRouterProvider){
+				$urlRouterProvider.otherwise('/one');
+				$stateProvider
+					.state('one',{
+						url:'/one',
+						template:'上一曲',
+						controller:'main'
+					})
+					.state('two',{
+						url:'/two',
+						template:'停止/播放',
+						controller:'main'
+					})
+					.state('three',{
+						url:'/three',
+						template:'下一曲',
+						controller:'main'
+					})
+			})
+			.directive('add',function(){
+				return {
+					restrict:'ECMA',
+					templateUrl:'',
+					controller:'main',
+					link:function(scope,ele,attr,controller){
+						s
+					}
+				}
+			})
+</script>

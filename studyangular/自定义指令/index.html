@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-controller="main">
+	{{message}}
+	{{fatherb}}
+	<name a='message' b='{{fatherb}}'></name>
+	<!-- <div name a="message"></div>
+	<div class="name" a="message"></div> -->
+	<!-- directive:name -->
+</body>
+<script src="angular.min.js"></script>
+</html>
+<script>
+	angular.module('app',[])
+			.controller('main',['$scope',function($scope){
+				$scope.message='hello';
+				$scope.fatherb='123';
+			}])
+			.directive('name',['$http',function($http){
+				// return {
+				// 	restrict:'ECMA',
+				// 	template:'<div>自定义指令</div>',
+				// 	replace:true
+				// }
+				
+
+				return {
+					restrict:'ECMA',
+					templateUrl:'./directive.html',
+					// template:'<div class="box">{{a}}</div>',
+					replace:true,
+					scope:{
+						a:'=',
+						b:'@'
+					},
+					controller:['$scope',function($scope){
+						$scope.a='world';
+					}]
+				}
+			}])
+</script>

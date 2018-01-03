@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-controller="main">
+    <select name="" id="" ng-model="languages" ng-change="changes(languages)">
+        <option value="cn">中文</option>
+        <option value="en">English</option>
+    </select>
+    {{languages}}
+	<ul>
+        <li>{{"name" | translate}}</li>
+        <li>{{"age" | translate}}</li>
+        <li>{{"sex" | translate}}</li>
+    </ul>
+</body>
+<script src="js/angular.min.js"></script>
+<script src="js/angular-translate.min.js"></script>
+<script src="js/angular-translate-loader-static-files.min.js"></script>
+
+<!--<script src="app/apps.js"></script>-->
+
+<!--<script src="server/ser1.js"></script>-->
+</html>
+<script>
+    var app=angular.module('app',['pascalprecht.translate']);
+    //app.factory('adds',['add',function(add){
+    //          var servers={
+    //              gets:function(languages){
+    //                  return add.server('get','http://localhost:8090/?'+languages);
+    //              }
+    //          }
+    //          return servers;
+    //      }])
+
+    app.config('$translateProvider',function($translateProvider){
+        $translateProvider.useStaticFilesLoader({
+            prefix:'data/',
+            suffix:'.json'
+        });
+        $translateProvider.preferredLanguage('cn');
+    });
+
+
+    app.controller('main',['$scope','$translate',function($scope,$translate){
+        $scope.languages='cn';
+        $scope.changes=function(vals){
+            $translate.use(vals);
+        }
+    }]);
+</script>

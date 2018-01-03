@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.hello{
+			width: 100px;
+			height: 100px;
+			background: purple;
+		}
+	</style>
+</head>
+<body ng-controller="main">
+	{{message}}
+	<!-- <div ng-class="message" ng-controller="controllera"></div> -->
+</body>
+<script src="angular.min.js"></script>
+</html>
+<script>
+	angular.module('app',[])
+			.controller('main',['$scope','$http','$timeout',function($scope,$http,$timeout){
+			$scope.message='hello';	
+			// $http({
+			// 	url:'http://localhost:3333/goodslist',
+			// 	method:'GET'
+			// })
+			// .then(function(result){
+			// 	console.log(result);
+			// },function(error){
+			// 	console.log(error); 
+			// })
+			
+
+			setTimeout(function(){
+				$scope.message='hello world';
+				$scope.$apply();
+				////$scope.$digest();
+			},1000)
+		}])
+		// .controller('controllera',['$scope',function($scope){
+			
+		// }])
+</script>

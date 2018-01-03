@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+            text-decoration: none;
+        }
+        .top{
+            margin: 30px 20px;
+        }
+        .top ul {
+            display: flex;
+            list-style: none;
+          }
+        .top ul li{
+            width: 200px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="top">
+        <ul>
+            <li><a ng-href="#/one">one</a></li>
+            <li><a ng-href="#/two/{name:'zs',age:'18'}">two</a></li>
+            <li><a ng-href="#/three">three</a></li>
+        </ul>
+    </div>
+    <div class="bottom" ng-controller="main">
+        <ng-view></ng-view>
+    </div>
+</body>
+<script src="angular.min.js"></script>
+<script src="angular-route.min.js"></script>
+</html>
+<script>
+   angular.module('app',['ngRoute'])
+           .controller('main',['$scope','$routeParams',function($scope,$routeParams){
+                console.log($routeParams.id);
+               var val=$routeParams.id;
+               console.log(typeof val);
+               for(var i in val){
+                   console.log(i);
+                   console.log(val[i]);
+               }
+           }])
+           .config(function($routeProvider){
+               $routeProvider
+                       .when('/one',{
+                           templateUrl:'one.html',
+                           controller:'main'
+                       })
+                       .when('/two/:id',{
+                           templateUrl:'two.html',
+                           controller:'main'
+                       })
+                       .when('/three',{
+                           templateUrl:'three.html',
+                           controller:'main'
+                       })
+                       .otherwise({
+                           redirectTo:'/one'
+                       })
+           })
+</script>

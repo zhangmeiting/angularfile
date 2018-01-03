@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='app'>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body ng-controller='main'>
+	<div word></div>
+</body>
+<script src="jquery-1.8.3.js"></script>
+<script src="angular.min.js"></script>
+</html>
+<script>
+	angular.module('app',[])
+			.controller('main',function($scope){
+				$scope.val=[1,2,3,4,5,6,7,8,9,10];
+			})
+			.directive('word',function(){
+				return {
+					restrict:'ECMA',
+					templateUrl:'./add.html',
+					controller:'main',
+					link:function(scope,ele,attr,controller){
+						var ind=$('b').html()-1;
+						var index;
+						$('ul').on('click','li',function(){
+							index=$(this).index();
+							console.log(index);
+							$(this).addClass('bg').siblings().removeClass('bg');
+							$('b').html($(this).html())
+						})
+						//console.log(index);
+						$('span').eq(1).on('click',function(){
+							ind++;
+							if(ind>=$('li').length){
+								ind=$('li').length-1;
+							}
+							$('li').eq(ind).addClass('bg').siblings().removeClass('bg');
+							$('b').html(ind+1);
+						})
+						$('span').eq(0).on('click',function(){
+							ind--;
+							if(ind<=0){
+								ind=0;
+							}
+							$('li').eq(ind).addClass('bg').siblings().removeClass('bg');
+							$('b').html(ind+1);
+						})
+					}
+				}
+			})
+</script>

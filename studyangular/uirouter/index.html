@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.top{
+			display: flex;
+		}
+		.top div{
+			flex: 1;
+		}
+	</style>
+</head>
+<body ng-controller="main">
+	<div class="top">
+		<div ui-sref="home">home</div>
+		<div ui-sref="about">about</div>
+		<div ui-sref="me">me</div>
+	</div>
+	<ui-view></ui-view>
+</body>
+<script src="angular.min.js"></script>
+<script src="angular-ui-router.js"></script>
+</html>
+<script>
+	angular.module('app',['ui.router'])
+			.config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
+				$urlRouterProvider.otherwise('/me');///////默认选中
+				$stateProvider.state('home',{
+					url:'/home',
+					template:`
+						<div>
+							<p>home</p>
+							<div ui-sref="home.page1">page1111</div>
+							<div ui-sref="home.page2">page2222</div>
+							<ui-view></ui-view>
+						</div>
+					`
+				})
+				.state('about',{
+					url:'/about',
+					template:'<div>about</div>'
+				})
+				.state('me',{
+					url:'/me',
+					template:'<div>me</div>'
+				})
+				.state('home.page1',{
+					url:'/page1',
+					template:'<div>page1</div>'
+				})
+				.state('home.page2',{
+					url:'/page2',
+					template:'<div>page2</div>'
+				})
+			}])
+			.controller('main',['$scope',function($scope){
+
+			}])
+</script>

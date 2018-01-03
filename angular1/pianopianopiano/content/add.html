@@ -1,0 +1,9 @@
+<div class="box">
+    <!--<div ng-repeat="vals in val" class="ht">{{vals.title}}-->
+        <!--<p ng-repeat="valss in vals.months" class="behe"> {{valss}}</p>-->
+    <!--</div>-->
+    <dl ng-repeat="vals in val" class="ht">
+        <dt>{{vals.title}}</dt>
+        <dd ng-repeat="valss in vals.months" class="behe">{{valss}}</dd>
+    </dl>
+</div>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
+	<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<meta name="format-detection" content="telphone=no, email=no" >
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+		document.documentElement.style.fontSize=window.innerWidth/375*50+'px';
+	</script>
+	<title>Document</title>
+</head>
+<body ng-controller="main">
+	<div class="box">
+		<header>酷狗音乐</header>
+		<main>
+			<div class="top">
+				<ul>
+					<li><a href="#!/one" ng-class="path=='/one'?'bg':''">新歌</a></li>
+					<li><a href="#!/two" ng-class="path=='/two'?'bg':''">排行</a></li>
+					<li><a href="#!/three" ng-class="path=='/three'?'bg':''">歌单</a></li>
+					<li><a href="#!/four" ng-class="path=='/four'?'bg':''">歌手</a></li>
+				</ul>
+			</div>
+			<ng-view></ng-view>
+			<!-- <div class="bottom">
+				<dl>
+					<dt>飙升榜</dt>
+					<dd>酷狗飙升榜</dd>
+				</dl>
+				<dl>
+					<dt>飙升榜</dt>
+					<dd>酷狗飙升榜</dd>
+				</dl>
+				<dl>
+					<dt>飙升榜</dt>
+					<dd>酷狗飙升榜</dd>
+				</dl>
+				<dl>
+					<dt>飙升榜</dt>
+					<dd>酷狗飙升榜</dd>
+				</dl>
+			</div> -->
+		</main>
+	</div>
+</body>
+<script src="angular.min.js"></script>
+<script src="angular-route.js"></script>
+</html>
+<script>
+	angular.module('app',['ngRoute'])
+			.config(['$routeProvider',function($routeProvider){
+				$routeProvider.when('/one',{
+					templateUrl:'./one.html',
+					controller:['$scope',function($scope){
+						$scope.data=[
+							{
+								name:'魏晨',
+								value:'旅程'
+							},
+							{
+								name:'魏晨',
+								value:'旅程'
+							},
+							{
+								name:'魏晨',
+								value:'旅程'
+							},
+							{
+								name:'魏晨',
+								value:'旅程'
+							}
+						]
+					}]
+				})
+				.when('/two',{
+					templateUrl:'./two.html',
+					controller:['$scope',function($scope){
+						$scope.data1=[
+							{
+								name:'飙升榜',
+								value:'酷狗飙升榜'
+							},
+							{
+								name:'飙升榜',
+								value:'酷狗飙升榜'
+							},
+							{
+								name:'飙升榜',
+								value:'酷狗飙升榜'
+							},
+							{
+								name:'飙升榜',
+								value:'酷狗飙升榜'
+							}
+						]
+					}]
+				})
+				.when('/three',{
+					templateUrl:'./three.html',
+					controller:['$scope',function($scope){
+						$scope.data=[
+							{
+								name:'3.png',
+								value:'梦想的声音   合辑'
+							},
+							{
+								name:'3.png',
+								value:'梦想的声音   合辑'
+							},
+							{
+								name:'3.png',
+								value:'梦想的声音   合辑'
+							},
+							{
+								name:'3.png',
+								value:'梦想的声音   合辑'
+							}
+						]
+					}]
+				})
+				.when('/four',{
+					templateUrl:'./four.html',
+					controller:['$scope',function($scope){
+						$scope.data1=[
+							{
+								name:'华语女歌手',
+								value:'>'
+							},
+							{
+								name:'华语女歌手',
+								value:'>'
+							},
+							{
+								name:'华语女歌手',
+								value:'>'
+							},
+							{
+								name:'华语女歌手',
+								value:'>'
+							},
+						]
+					}]
+				})
+				.otherwise('/three')
+			}])
+			.controller('main',['$scope',function(){
+
+			}])
+			.run(['$rootScope',function($rootScope){
+				$rootScope.$on('$routeChangeSuccess',function(event,currentRoute,previousRoute){
+						$rootScope.path=currentRoute.$$route.originalPath;
+				})
+			}])
+</script>

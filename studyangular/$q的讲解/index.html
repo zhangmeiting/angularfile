@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-controller="main">
+	{{data.value}}
+</body>
+<script src="angular.min.js"></script>
+</html>
+<script>
+	angular.module('app',[])
+		.controller('main',['$scope','$ajax',function($scope,$ajax){
+			$scope.data=$ajax.get('http://localhost:8080/goodslist');
+		}])
+		.provider('',function($http,$q){
+			return {
+				$get:['$http','$q',function(){
+					function ajax(obj){
+						if('data' in obj){
+							if(typeof obj.data == 'object'){
+								var str='';
+								for(var key in obj.data){
+									str+=key+'='+obj.data['key']+'&';
+								}
+								str=str.substring(0,-1);
+							}
+							obj.data=str;							''						}
+						$http(obj)
+					}
+					ajax.get=function(url){
+						var deffer=$q.defer();
+						/////新建一个deffer对象
+						///处于等待状态
+						$http.get(url).then(function(result){
+							deffer.resolve(result.data);
+							////由等待状态变成已解决状态
+						},function(error){
+							deffer.reject(error);
+							////由等待状态变成已失败
+						})
+						return deffer.promise.$$state;
+					}
+					return new function(){
+						return ajax
+					}
+				}]
+			}
+		})
+</script>

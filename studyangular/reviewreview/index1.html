@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-controller="main">
+	{{msg}}
+	{{thetime}}
+	{{time}}
+</body>
+<script src="angular.min.js"></script>
+</html>
+<script>
+	angular.module('app',[])
+			.controller('main',['$scope','$timeout','$interval',function($scope,$timeout,$interval){
+				$scope.msg='hello';
+				$timeout(function(){
+					$scope.msg='hello world';
+				},2000)
+				$scope.thetime=new Date().toLocaleTimeString();
+				$interval(function(){
+					$scope.thetime=new Date().toLocaleTimeString();
+				},1000);
+				
+
+				$scope.time=10;
+				$interval(function(){
+					$scope.time--;
+					if($scope.time<0){
+						$scope.time=0;
+					}
+				},1000);
+			}])
+</script>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// function sum1(a){
+		// 	var sum = a;
+		// 	for(var i=a; i >= 1; i--){
+		// 		sum += i-1;
+		// 	}
+		// 	return sum;
+		// }
+		// console.log(sum1(3));/////6
+		
+		// function sum2(a){
+		//   if(a==1){
+		// 	return 1;
+		//   }else{
+		// 	return a + sum2(a-1);
+		//   }
+		// }
+		// alert( sum2(3) );///6
+		
+		// function sum3( a1, an, d ){
+		// 	var n = (an - a1)/d + 1;
+		// 	return n*a1 + n*(n-1)*d/2;
+		// }
+		// alert(sum3(1,5,1));////15
+		
+		// function getSuffix(filename){
+		//    var dotLast = filename.lastIndexOf(".");
+		//    if(dotLast==-1){
+		// 	return "文件名格式不正确";
+		//    }else{
+		// 	return filename.substr(dotLast);
+		//    }
+		// }
+		// alert( getSuffix("a.jpeg") );////.jpeg
+		
+		// var i=2;
+		// for(var i=0,j=0;i<5;i++){
+		//     console.log(i);
+		// }
+		// //console.log(i);
+		/////0,1,2,3,4,5
+		
+		// var a = [1,"yes",3];
+		// var b = [].concat(a);
+		// console.log(b);
+		
+		// var a = [1,"yes",3];
+		// var b=a.splice(0,a.length);
+		// ////var b = a.slice(0,a.length);
+		// console.log(b);
+		
+		// var str='abcdefg';
+		// console.log(str.slice(0,str.length));
+		// console.log(str.substr(0,str.length-1));
+		// console.log(str.substr(0,str.length));
+		
+		// function f1(){
+		// 	n=111;  //局部变量对fa可见
+		// 	function f2(){
+		// 		alert(n); //f2内部的局部变量，对f1 就是不可见的
+		// 	}//子对象会一级一级地向上寻找所有父对象的变量
+		// 	return f2;    //f1读取f2的内部变量  只要把F2作为返回值
+		// }
+		// var result=f1();
+		// console.log(result);
+		// result(); // 111
+		
+		var name = "The Window";
+		 　　var object = {
+		 　　　　name : "My Object",
+		 　　　　getNameFunc : function(){
+		 　　　　　　return function(){
+		 　　　　　　　　return this.name;
+		 　　　　　　};
+		 　　　　}
+		 　　};
+		alert(object.getNameFunc()());//////The Window
+	</script>
+</body>
+</html>

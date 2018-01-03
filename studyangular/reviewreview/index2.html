@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-controller="main">
+	<select name="" id=""></select>
+	<select name="" id=""></select>
+	<select name="" id=""></select>
+</body>
+<script src="angular.min.js"></script>
+</html>
+<script>
+	angular.module('app',[])
+			.controller('main',['$scope','$http',function($scope,$http){
+					$http.get('./data.json').then(function(data){
+						console.log(data.data);
+					})
+			}])
+</script>

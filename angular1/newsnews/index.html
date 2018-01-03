@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='app'>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/style1.css"/>
+	<link rel="stylesheet" href="css/style2.css"/>
+</head>
+<body ng-controller="main">
+	<div class="top">
+		<ul>
+			<li><a ng-href="#/one/0">1</a></li>
+			<li><a ng-href="#/two/1">2</a></li>
+			<li><a ng-href="#/three/2">3</a></li>
+			<li><a ng-href="#/four/3">4</a></li>
+			<li><a ng-href="#/five/4">5</a></li>
+			<li><a ng-href="#/six/5">6</a></li>
+			<li><a ng-href="#/seven/6">7</a></li>
+			<li><a ng-href="#/eight/7">8</a></li>
+		</ul>
+	</div>
+	<div class="bottom">
+		<ng-view></ng-view>
+	</div>
+</body>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/angular.min.js"></script>
+<script src="js/angular-route.min.js"></script>
+
+<script src="app/app.js"></script>
+
+<script src="server/ser1.js"></script>
+<script src="server/ser2.js"></script>
+
+<script src="controller/con1.js"></script>
+
+<script src="directive/news.js"></script>
+</html>

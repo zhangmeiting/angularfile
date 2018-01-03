@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en"ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		.box{
+			width: 600px;
+			height: auto;
+			margin: 30px auto;
+		}
+		.box table{
+			width: 600px;
+			margin: 30px;
+			border-collapse: collapse;
+		}
+		.box table tr{
+			display: flex;
+			height: 40px;
+
+		}
+		.box table tr th{
+			line-height: 40px;
+			text-align: center;
+			flex: 1;
+			border: 1px solid #ddd;
+		}
+		.box table tr td{
+			line-height: 40px;
+			text-align: center;
+			flex: 1;
+			border: 1px solid #ddd;
+		}
+	</style>
+</head>
+<body ng-controller="main">
+	<div class="box">
+		<input type="text" ng-model="val">
+		<table>
+			<tr>
+				<th>选择</th>
+				<th>登录名</th>
+				<th>真实姓名</th>
+				<th>状态</th>
+				<th>QQ</th>
+				<th>操作</th>
+			</tr>
+			<!-- <tr>
+				<td><input type="checkbox"></td>
+				<td>admin</td>
+				<td>张素</td>
+				<td>正常</td>
+				<td>72234565</td>
+				<td><input type="button" value="删除"></td>
+			</tr> -->
+			<tr ng-repeat="item in data | filter : val">
+				<td><input type="checkbox"></td>
+				<td>{{item.user}}</td>
+				<td>{{item.name}}</td>
+				<td>{{item.state}}</td>
+				<td>{{item.QQ}}</td>
+				<td><input type="button" value="删除"></td>
+			</tr>
+
+		</table>
+	</div>
+</body>
+<script src="angular.min.js"></script>
+<!-- <script src="angular-ui-router.js"></script>
+ --></html>
+<script>
+	angular.module('app',[])
+			.controller('main',['$scope','$http',function($scope,$http){
+					$http({
+						method:'POST',
+						url:'http://localhost:8899/post'
+					}).then(function(result){
+						$scope.data=result.data;
+						console.log(result.data);
+					},function(error){
+						console.log(error);
+					})
+			}])
+</script>

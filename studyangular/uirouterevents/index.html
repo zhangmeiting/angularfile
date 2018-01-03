@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box{
+			display: flex;
+		}
+		.box div{
+			flex: 1;
+		}
+	</style>
+</head>
+<body ng-controller="main">
+	<div class="box">
+		<div ui-sref="home({keys:[5,1,2,3,4]})">home</div>
+		<div ui-sref="about">about</div>
+		<div ui-sref="me">me</div>
+	</div>
+	<ui-view></ui-view>
+</body>
+<script src="angular.min.js"></script>
+<script src="angular-ui-router.js"></script>
+<script src="stateEvents.js"></script>
+</html>
+<script>
+	angular.module('app',['ui.router','ui.router.state.events'])
+			.config(['$stateProvider',function($stateProvider){
+				$stateProvider.state('home',{
+					url:'/home',
+					template:'<div>home</div>',
+					controller:['$scope','$stateParams',function($scope,$stateParams){
+						console.log($stateParams);
+						console.log($stateParams.keys);
+						$stateParams.keys.forEach(function(v,i){
+							console.log(v);
+							console.log(i);
+						})
+					}],
+					params:{
+						keys:[]
+					}
+				})
+				.state('about',{
+					url:'/about',
+					template:'<div>about</div>',
+					controller:['$scope',function($scope){
+						
+					}]
+				})
+				.state('me',{
+					url:'/me',
+					templateUrl:'./me.html',
+					controller:['$scope',function($scope){
+						
+					}]
+				})
+			}])
+			.run(['$rootScope',function($rootScope){
+				// exports.$stateChangeStart = $stateChangeStart;
+				// exports.$stateChangeCancel = $stateChangeCancel;
+				// exports.$stateChangeSuccess = $stateChangeSuccess;
+				// exports.$stateChangeError = $stateChangeError;
+				// exports.$stateNotFound = $stateNotFound;
+				$rootScope.$on('$stateChangeStart',function(event,currentRoute,currentParams,previousRoute,previousParams){
+					console.log(previousParams);
+					// console.log(previousRoute);
+					// console.log(currentParams);
+					// console.log(currentRoute);
+					// console.log(event);
+					// console.log(arguments);
+					// console.log('跳转开始');
+				}) 
+				$rootScope.$on('$stateChangeCancel',function(){
+					console.log('跳转取消');
+					////////1. 是请求一个页面太晚了 在跳转成功之前用户点击了其他的页面
+                        //2. 路由跳转被中断
+				}) 
+				$rootScope.$on('$stateChangeSuccess',function(){
+					console.log('跳转成功');
+				}) 
+				$rootScope.$on('$stateChangeError',function(){
+					console.log('跳转失败');
+				})    
+				$rootScope.$on('$stateNotFound',function(){
+					console.log('跳转没找到');
+					///////1. 路由没在state里面配置但在 ui-sref 中使用了
+				})  
+				
+			}])
+			.controller('main',['$scope',function($scope){
+
+			}])
+
+</script>

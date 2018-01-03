@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telphone=no, email=no">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body ng-controller="main">
+	<div class="wrap">
+		<header>
+			食堂.点菜
+		</header>
+		<main>
+			<tab class="box"></tab>
+		</main>
+		<footer>
+			购物车
+		</footer>
+	</div>
+</body>
+<script src="js/angular.min.js"></script>
+</html>
+<script>
+	angular.module('app',[])
+			.controller('main',['$scope','$http',function($scope,$http){
+				$http({
+					url:'http://localhost:8899'
+				})
+				.then(function(result){
+					$scope.data=result.data;
+				},function(error){
+					console.log(error);
+				})
+			}])
+			.directive('tab',function(){
+				return {
+					restrict:'ECMA',
+					template:`
+						
+					`,
+					controller:function($scope){
+						$scope.fn=function(obj,i){
+							$scope.datatwo=obj;
+							$scope.index=i;
+						};
+						$scope.$watch('data',function(n,o){
+							if(n!=o){
+								$scope.datatwo=n[0];
+								$scope.index=0;
+							}
+						});
+						$scope.click=function(obj,j,i){
+							if(obj.state==true){
+								obj.state=false;
+							}else{
+								obj.state=true;
+							}
+							$scope.data[i].datas.splice(j,1,obj);
+							localStorage.data=JSON.stringify($scope.data);
+						}
+					}
+				}
+			})
+</script>

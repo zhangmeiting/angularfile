@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body ng-controller="main">
+<word></word>
+</body>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/angular.min.js"></script>
+</html>
+<script>
+    angular.module('app',[])
+            .controller('main',function($scope){
+                $scope.val=[
+                    {
+                        title:'第一季度',
+                        months:['一月','二月','三月']
+                    },
+                    {
+                        title:'第二季度',
+                        months:['四月','五月','六月']
+                    },
+                    {
+                        title:'第三季度',
+                        months:['七月','八月','九月']
+                    },
+                    {
+                        title:'第四季度',
+                        months:['十月','十一月','十二月']
+                    }
+                ];
+            })
+            .directive('word',function(){
+                return {
+                    restrict:'ECMA',
+                    templateUrl:'content/add.html',
+                    controller:'main',
+                    link:function(scope,ele,attr,controller){
+                        $(".box").on("click", ".ht", function() {
+                            // alert(111)
+                            $(this).find(".behe").show();
+                            $(this).siblings().find(".behe").hide()
+                        })
+                    }
+                }
+            })
+</script>

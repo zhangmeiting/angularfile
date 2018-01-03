@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	
+</head>
+<body ng-controller="main">
+	<div class="top">
+		<a href="#!/home?page=home&id=10">home</a>
+		<a href="#!/about/about/111111">about</a>
+		<div ng-click="change('/me')">me</div>
+	</div>
+	<ng-view></ng-view>
+</body>
+<script src="angular.min.js"></script>
+<script src="angular-route.js"></script>
+</html>
+<script>
+	angular.module('app',['ngRoute'])
+			.config(['$routeProvider',function($routeProvider){
+				$routeProvider.when('/home',{
+					templateUrl:'./home.html',
+					controller:['$routeParams','$location',function($routeParams,$location){
+							console.log($routeParams);
+							console.log($location.search())
+							}]
+				})
+				.when('/about/:page/:id',{
+					templateUrl:'./about.html',
+					controller:['$routeParams','$location',function($routeParams,$location){
+								console.log($routeParams);
+							}]
+				})
+				.when('/me/:pahe/:id',{
+					templateUrl:'./me.html',
+					controller:['$routeParams',function($routeParams){
+							console.log($routeParams);
+						}]
+				})
+				.otherwise({
+					redirectTo:'/about'
+				})
+			}])
+			
+			.controller('main',['$scope','$location',function($scope,$location){
+					$scope.change=function(path){
+						var fullurl=path+'/me/meeeeeeeeee';
+						$location.url(fullurl);
+					}
+			}])
+</script>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='app'>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body ng-controller="main">
+	<div hello-world></div>
+</body>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/angular.min.js"></script>
+</html>
+<script>
+	angular.module('app',[])
+			.controller('main',function($scope){
+				$scope.array=[
+					{
+						title:'春',
+						content:'希望',
+						imgurl:'img/1.jpg'
+					},
+					{
+						title:'夏',
+						content:'活力',
+						imgurl:'img/2.jpg'
+					},
+					{
+						title:'秋',
+						content:'收获',
+						imgurl:'img/3.jpg'
+					},
+					{
+						title:'冬',
+						content:'积淀',
+						imgurl:'img/4.jpg'
+					}
+				]
+				
+			})
+			.directive('helloWorld',function(){
+					return {
+						restrict:'ECMA',
+						templateUrl:'./content/add.html',
+						link:function(scope,element,attribute,controller){
+							var ind=0;
+							var timer=null;
+								timer=setInterval(function(){
+									ind++;
+									if(ind>3){
+										ind=0;
+									}
+									$('ul').find('li').eq(ind).addClass("active").siblings().removeClass("active");
+									$(element).find("dl").eq(ind).show().siblings().hide();
+								},1500)
+							$('.big').on('mouseover',function(){
+								clearInterval(timer);
+							}).on('mouseout',function(){
+								ind=index;
+								timer=setInterval(function(){
+									ind++;
+									if(ind>3){
+										ind=0;
+									}
+									$('ul').find('li').eq(ind).addClass("active").siblings().removeClass("active");
+									$(element).find("dl").eq(ind).show().siblings().hide();
+								},1500)
+							})
+							var index;
+							$('ul').on('click', 'li', function () {
+								index = $(this).index();
+								$(this).addClass("active").siblings().removeClass("active");
+								$(element).find("dl").eq(index).show().siblings().hide();
+							});
+							// console.log(scope);
+							// console.log(element);
+							//console.log($(element));
+							// console.log(attribute);
+							// console.log(controller);
+							//scope.val+='66666';
+						},
+						controller:'main'
+						
+					}
+				})
+</script>

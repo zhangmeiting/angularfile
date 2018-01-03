@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='app'>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
+	<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<meta name="format-detection" content="telphone=no, email=no" >
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			text-decoration: none;
+		}
+		html,body,.box{
+			width: 100%;
+			height: 100%;
+		}
+		.box{
+			display: flex;
+			flex-direction: column;
+		}
+		header{
+			width: 100%;
+			height: 40px;
+			line-height: 40px;
+			text-align: center;
+		}
+		main{
+			flex: 1;
+			overflow-y: auto;
+		}
+		.up{
+			width: 100%;
+			height: 40px;
+		}
+		.up ul{
+			width: 100%;
+			height: 100%;
+			display: flex;
+		}
+		.up ul li{
+			flex: 1;
+			height: 38px;
+			line-height: 30px;
+			text-align: center;
+		}
+		.up ul li.bg{
+			color: blue;
+			border-bottom: 2px solid blue;
+		}
+		.down{
+			width: 100%;
+			height: 100px;
+		}
+		.down dl{
+			width: 100%;
+			height: 98px;
+			border-bottom: 2px solid #ccc;
+			display: flex;
+			align-items: center;
+		}
+		.down dl dt{
+			width: 50px;
+			height: 50px;
+			background: blue;
+			border-radius: 100%;
+			color: white;
+			font-weight: bolder;
+			text-align: center;
+			line-height: 50px;
+			margin: 0 10px;
+		}
+		.down dl dd{
+			font-weight: bolder;
+			line-height: 98px;
+		}
+	</style>
+</head>
+<body ng-controller='main'>
+	<div class="box">
+		<header>
+			交易明细
+		</header>
+		<main>
+			<div class="up">
+				<ul>
+					<li ui-sref="one" ui-sref-active="bg">全部</li>
+					<li ui-sref="two" ui-sref-active="bg">支出</li>
+					<li ui-sref="three" ui-sref-active="bg">收入</li>
+				</ul>
+			</div>
+			<div class="down">
+				<ui-view></ui-view>
+				<!-- <dl>
+					<dt>支出</dt>
+					<dd>项目支出</dd>
+				</dl> -->
+			</div>
+		</main>
+	</div>
+</body>
+<script src="angular.min.js"></script>
+<script src="angular-ui-router.js"></script>
+</html>
+<script>
+	angular.module('app',['ui.router'])
+			.controller('main',['$scope',function($scope){
+
+			}])
+			.config(function($stateProvider,$urlRouterProvider){
+				$stateProvider
+					.state('one',{
+						url:'/one',
+						templateUrl:'one.html',
+						controller:'main'
+					})
+					.state('two',{
+						url:'/two',
+						templateUrl:'two.html',
+						controller:'main'
+					})
+					.state('three',{
+						url:'/three',
+						templateUrl:'three.html',
+						controller:'main'
+					});
+					$urlRouterProvider
+						.otherwise('/one');
+			})
+</script>

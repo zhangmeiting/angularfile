@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.active{
+			background: orange;
+		}
+	</style>
+</head>
+<body ng-controller="main">
+	<div class="box">
+		<a href="#!/home" ng-class="path=='/home'?'active':''">home</a>
+		<a href="#!/about" ng-class="path=='/about'?'active':''">about</a>
+		<a href="#!/me" ng-class="path=='/me'?'active':''">me</a>
+	</div>
+	<ng-view></ng-view>
+</body>
+<script src="angular.min.js"></script>
+<script src="angular.js"></script>
+<script src="angular-route.js"></script>
+</html>
+<script>
+	angular.module('app',['ngRoute'])
+			.config(['$routeProvider',function($routeProvider){
+				$routeProvider.when('/home',{
+					template:'<div>home{{data}}</div>',
+					controller:['$scope','$timeout',function($scope,$timeout){
+						$timeout(function(){
+							$scope.data='aaabbb';
+						},2000)
+					}],
+					reloadOnSearch:true
+				}).when('/about',{
+					template:'<div>about</div>'
+				}).when('/me',{
+					template:'<div>me</div>'
+				}).otherwise('/me')
+			}])
+			.controller('main',['$scope',function($scope){
+				$scope.data='aaa';
+			}])
+			.run(['$rootScope',function($rootScope){
+				$rootScope.$on('$routeChangeStart',function(event,currentRoute,previousRoute){
+					// console.log(previousRoute);
+					// console.log(currentRoute);
+					// console.log(event.name);
+					// console.log('start');
+				})
+				$rootScope.$on('$routeChangeSuccess',function(event,currentRoute,previousRoute){
+					console.log(currentRoute.$$route.originalPath);//// /home
+					$rootScope.path=currentRoute.$$route.originalPath;
+					console.log('success',arguments);
+				})
+				$rootScope.$on('$routeChangeError',function(event,currentRoute,previousRoute,error){
+						console.log('fail');
+				})
+				$rootScope.$on('$routeChangeUpdate',function(){
+					console.log('update');
+				})
+			}])
+
+			
+</script>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-controller="main">
+	
+</body>
+<script src="angular.min.js"></script>
+</html>
+<script>
+    angular.module('app',[])
+            .controller('main',function($location){
+                console.log($location);
+                console.log($location.absUrl());
+                console.log($location.host());
+                console.log($location.port());
+                console.log($location.protocol());
+                console.log($location.url());
+            })
+</script>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            
+        </ul>
+    </div>
+    $ gulp 文件夹名称
+<script>
+    var param;
+    if(window.XMLHttpRequest){
+        var xml=new XMLHttpRequest();
+    }else{
+        var xml=new ActiveXObject('Microsoft.XMLHTTP');
+    }
+    xml.open('get','http://localhost:8090/index.html?newlist');
+    xml.send(null);
+    xml.onreadystatechange=function(){
+        if(xml.readyState==4 && xml.status == 200){
+            /////console.log(JSON.parse(xml.responseText).data);
+            param=JSON.parse(xml.responseText).data;
+            console.log(JSON.parse(param));
+            var datas=JSON.parse(param);
+            var str='';
+            datas.forEach(function(v,i){
+                str+='<li><b>'+v.title+'</b><i>'+v.content+'</i></li>';
+            })
+            document.getElementsByTagName('ul')[0].innerHTML=str;
+
+        }
+    }
+   
+</script>
+</body>
+</html>

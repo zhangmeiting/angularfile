@@ -1,0 +1,26 @@
+[
+	{
+		"src":"img/1.jpg",
+		"com":"✖",
+		"price":89,
+		"num":1,
+		"addup":89,
+	  	"status":""
+	},
+	{
+		"src":"img/2.jpg",
+		"com":"✖",
+		"price":89,
+		"num":2,
+		"addup":89,
+	  	"status":""
+	},
+	{
+		"src":"img/3.jpg",
+		"com":"✖",
+		"price":89,
+		"num":3,
+		"addup":89,
+	  	"status":""
+	}
+]

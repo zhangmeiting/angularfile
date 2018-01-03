@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+dl{
+    width: 400px;
+    height: auto;
+}
+dl dt{
+    width: 400px;
+    height: 40px;
+    line-height: 40px;
+    background: skyblue;
+    text-align: center;
+    font-size: 16px;
+}
+dl dd{
+    width: 400px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 16px;
+    background: orange;
+    display: none;
+}

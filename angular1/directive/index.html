@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='app'>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body ng-controller="main">
+	<div hello-world></div>
+</body>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/angular.min.js"></script>
+</html>
+<script>
+	angular.module('app',[])
+			.controller('main',function($scope){
+				$scope.array=[
+					{
+						title:'春天',
+						content:'希望',
+						imgurl:'img/1.jpg'
+					},
+					{
+						title:'夏天',
+						content:'活力',
+						imgurl:'img/2.jpg'
+					},
+					{
+						title:'秋天',
+						content:'收获',
+						imgurl:'img/3.jpg'
+					},
+					{
+						title:'冬天',
+						content:'积淀',
+						imgurl:'img/4.jpg'
+					}
+				]
+				
+			})
+			.directive('helloWorld',function(){
+					return {
+						restrict:'ECMA',
+						templateUrl:'./content/add.html',
+						link:function(scope,element,attribute,controller){
+							 $('ul').on('click', 'li', function () {
+				                 var index = $(this).index();
+				                 $(this).addClass("active").siblings().removeClass("active");
+				                  $(element).find("dl").eq(index).show().siblings().hide();
+				             });
+							// console.log(scope);
+							// console.log(element);
+							//console.log($(element));
+							// console.log(attribute);
+							// console.log(controller);
+							//scope.val+='66666';
+						},
+						controller:'main'
+						
+					}
+				})
+</script>

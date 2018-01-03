@@ -1,0 +1,166 @@
+* {
+  box-sizing: border-box; }
+
+body {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  font-size: .12rem;
+  display: -webkit-flex;
+  -webkit-flex-direction: column; }
+
+.header {
+  position: relative;
+  height: .4rem; }
+  .header .nav1 {
+    width: 30%;
+    height: .4rem;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: .4rem;
+    display: -webkit-flex; }
+    .header .nav1 li {
+      flex: 1;
+      text-align: center; }
+    .header .nav1 li.active, .header .nav1 a:hover {
+      color: blue; }
+  .header i {
+    position: absolute;
+    right: .1rem;
+    top: .1rem; }
+
+.section {
+  flex: 1;
+  overflow-y: scroll;
+  background-color: #eee; }
+  .section .banner-container {
+    height: 128px; }
+  .section .nav2 {
+    height: 1.08rem;
+    background-color: white; }
+    .section .nav2 li i {
+      width: .43rem;
+      height: .43rem;
+      border-radius: 15px;
+      line-height: .43rem; }
+  .section .lang {
+    background-color: #ecf1f4; }
+    .section .lang .bao {
+      width: 90%;
+      height: .75rem;
+      margin-left: auto;
+      margin-right: auto; }
+      .section .lang .bao img {
+        width: 100%;
+        height: 100%; }
+  .section .honer {
+    background-color: white;
+    height: 2.6rem; }
+    .section .honer .nav3 {
+      border-top: 1px solid #ccc; }
+      .section .honer .nav3 li {
+        width: 25%;
+        border-bottom: 1px solid #ccc;
+        border-right: 1px solid #ccc; }
+  .section .time {
+    background-color: white;
+    height: 1.9rem; }
+    .section .time .head {
+      display: -webkit-flex;
+      justify-content: space-between;
+      align-items: center; }
+      .section .time .head .times {
+        display: inline-block; }
+        .section .time .head .times span {
+          display: inline-block;
+          width: .2rem;
+          height: .2rem;
+          line-height: .2rem;
+          background-color: #333;
+          margin-left: 5px; }
+    .section .time #buy {
+      width: 100%;
+      height: 1.5rem;
+      overflow-x: scroll;
+      overflow: hidden; }
+      .section .time #buy ul {
+        padding: .1rem;
+        width: 1000px;
+        height: 1.5rem; }
+        .section .time #buy ul li {
+          width: 1.3rem;
+          height: 1.2rem;
+          float: left;
+          border: 1px solid #ccc;
+          padding: .1rem;
+          margin-left: 15px; }
+          .section .time #buy ul li img {
+            width: 102px;
+            height: 56px; }
+          .section .time #buy ul li .price {
+            color: #fdaa80; }
+            .section .time #buy ul li .price span {
+              color: #ccc;
+              text-decoration: line-through;
+              margin-left: 20px; }
+  .section .area {
+    background-color: white;
+    height: 1.9rem; }
+    .section .area .head {
+      display: -webkit-flex;
+      justify-content: space-between;
+      align-items: center; }
+      .section .area .head .more {
+        display: -webkit-flex;
+        justify-content: space-around;
+        align-items: center; }
+    .section .area .all {
+      border-top: 1px solid #ccc; }
+      .section .area .all .big {
+        border-right: 1px solid #ccc; }
+        .section .area .all .big .img {
+          width: .78rem;
+          height: .8rem; }
+          .section .area .all .big .img img {
+            width: 100%;
+            height: 100%; }
+  .section .like {
+    background-color: white; }
+    .section .like .head {
+      display: -webkit-flex;
+      justify-content: space-between;
+      align-items: center; }
+      .section .like .head .more {
+        display: -webkit-flex;
+        justify-content: space-around;
+        align-items: center; }
+    .section .like .car {
+      width: 100%; }
+      .section .like .car li {
+        width: 50%; }
+        .section .like .car li .carImg {
+          width: 80%;
+          height: .73rem; }
+          .section .like .car li .carImg img {
+            width: 100%;
+            height: 100%; }
+        .section .like .car li .price {
+          color: #fdaa80;
+          font-size: .16rem; }
+          .section .like .car li .price span {
+            color: #ccc;
+            text-decoration: line-through;
+            margin-left: 20px;
+            font-size: .14rem; }
+
+.footer .list {
+  display: -webkit-flex;
+  justify-content: space-around;
+  align-items: center; }
+  .footer .list li {
+    width: 20%; }
+  .footer .list li:hover {
+    color: dodgerblue; }
+
+/*# sourceMappingURL=style.css.map */

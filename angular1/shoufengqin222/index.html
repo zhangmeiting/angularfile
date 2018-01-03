@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+	<link rel="stylesheet" href="css/style.css"/>
+</head>
+<body ng-controller="main">
+	<div adds></div>
+</body>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/angular.min.js"></script>
+</html>
+<script>
+	angular.module('app',[])
+			.controller('main',function($scope){
+				$scope.val=[
+					{
+						title:'第一季度',
+						months:['一月','二月','三月']
+					},
+					{
+						title:'第二季度',
+						months:['四月','五月','六月']
+					},
+					{
+						title:'第三季度',
+						months:['七月','八月','九月']
+					},
+					{
+						title:'第四季度',
+						months:['十月','十一月','十二月']
+					}
+				]
+			})
+			.directive('adds',function(){
+				return {
+					restrict:'ECMA',
+					templateUrl:'content/add.html',
+					link:function(scope,ele,attr,controller){
+						$('.box').on('click','dt',function(){
+							//alert('666');
+							$(this).siblings().slideToggle();
+							//$(this).siblings().slideDown().parent().siblings().find('dd').slideUp();
+						})
+
+					},
+					controller:'main'
+				}
+			})
+</script>

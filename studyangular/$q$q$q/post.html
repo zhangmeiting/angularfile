@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body ng-controller="main">
+    {{msg.value}}
+</body>
+    <script src="angular.min.js"></script>
+</html>
+<script>
+    angular.module('app',[])
+           .controller('main',['$scope','ajax',function($scope,ajax){
+
+                $scope.msg = ajax.get({
+                    url:'http://localhost:3333/login',
+                    method:'POST',
+                    data:'username=zs&password=123'
+                })
+
+           }])
+           .service('ajax',['$http','$q',function($http,$q){
+
+                this.get=function(obj){
+                    var defer = $q.defer(); //等待  $q 是angularJS 对 promise思想的一种实现
+                    $http(obj).then(function(result){
+                        defer.resolve(result.data); //已解决
+                    },function(error){
+                        defer.reject(error) // 已拒绝
+                    })
+
+                    return defer.promise.$$state; //返回 promis 的状态以及 他携带的数据
+                }
+
+           }])
+</script>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		
+	</style>
+</head>
+<body ng-controller="main">
+	<input type="text" ng-model="val">
+	<h4>
+		{{fun()}}
+	</h4>
+</body>
+<script src="angular.min.js"></script>
+</html>
+<script>
+	angular.module('app',[])
+		.controller('main',['$scope','services',function($scope,services){
+			$scope.val=10;
+			$scope.fun=function(){
+				return services.power($scope.val);
+			}
+		}])
+		.service('services',[function(){
+			this.power=function(a){
+				return a*a;
+			}
+		}])
+</script>

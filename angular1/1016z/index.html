@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="fonts/iconfont.css">
+	<script>
+		document.documentElement.style.fontSize=window.innerWidth/375*100+'px';
+	</script>
+</head>
+<body>
+	<div class="box">
+		<header>
+			<i class="iconfont">&#xe64f;</i>
+			<b>Segmentfault</b>
+			<i class="iconfont">&#xe63f;</i>
+		</header>
+		<main>
+			<div class="top">
+				<ul>
+					<li><a href="#!/one">最新问答</a></li>
+					<li><a href="#!/two">热门问答</a></li>
+					<li><a href="#!/three">等待问答</a></li>
+					<li><a href="#!/four">更多</a></li>
+				</ul>
+			</div>
+			<div class="bottom" ng-controller="main">
+				<ng-view></ng-view>
+			</div>
+		</main>
+		<footer>
+			<div class="footer" ng-controller="footer">
+				<dl ng-click="fn1()" ng-class="val1">
+					<dt>
+						<i class="iconfont">&#xe664;</i>
+					</dt>
+					<dd>问答</dd>
+				</dl>
+				<dl ng-click="fn2()" ng-class="val2">
+					<dt>
+						<i class="iconfont">&#xe664;</i>
+					</dt>
+					<dd>问答</dd>
+				</dl>
+				<dl ng-click="fn3()" ng-class="val3">
+					<dt>
+						<i class="iconfont">&#xe664;</i>
+					</dt>
+					<dd>问答</dd>
+				</dl>
+				<dl ng-click="fn4()" ng-class="val4">
+					<dt>
+						<i class="iconfont">&#xe664;</i>
+					</dt>
+					<dd>问答</dd>
+				</dl>
+				<dl ng-click="fn5()" ng-class="val5">
+					<dt>
+						<i class="iconfont">&#xe664;</i>
+					</dt>
+					<dd>问答</dd>
+				</dl>
+			</div>
+		</footer>
+	</div>
+</body>
+<script src="js/angular.min.js"></script>
+<script src="js/angular-route.min.js"></script>
+</html>
+<script>
+	angular.module('app',['ngRoute'])
+			.controller('main',['$scope','$http',function($scope,$http){
+//				$http({
+//					url:'http://localhost:8888/index.html?package'
+//				}).then(function(res){
+//					console.log(res);
+//				})
+			}])
+			.controller('footer',['$scope','$http',function($scope,$http){
+				$http({
+					url:'http://localhost:8888/index.html?one'
+				}).then(function(res){
+					console.log(res);
+				})
+				$scope.bools1=true;
+				$scope.fn1=function(){
+					$scope.bools1=!$scope.bools1;
+					if($scope.bools1){
+						$scope.val1='bg';
+					}else{
+						$scope.val1='';
+					}
+				}
+				$scope.bools2=true;
+				$scope.fn2=function(){
+					$scope.bools2=!$scope.bools2;
+					if($scope.bools2){
+						$scope.val2='bg';
+					}else{
+						$scope.val2='';
+					}
+				}
+				$scope.bools3=true;
+				$scope.fn3=function(){
+					$scope.bools3=!$scope.bools3;
+					if($scope.bools3){
+						$scope.val3='bg';
+					}else{
+						$scope.val3='';
+					}
+				}
+				$scope.bools4=true;
+				$scope.fn4=function(){
+					$scope.bools4=!$scope.bools4;
+					if($scope.bools4){
+						$scope.val4='bg';
+					}else{
+						$scope.val4='';
+					}
+				}
+				$scope.bools5=true;
+				$scope.fn5=function(){
+					$scope.bools5=!$scope.bools5;
+					if($scope.bools5){
+						$scope.val5='bg';
+					}else{
+						$scope.val5='';
+					}
+				}
+			}])
+			.config(function($routeProvider){
+				$routeProvider
+					.when('/one',{
+						templateUrl:'./one.html',
+						controller:'main'
+					})
+					.when('/two',{
+						templateUrl:'./two.html',
+						controller:'main'
+					})
+					.when('/three',{
+						templateUrl:'./three.html',
+						controller:'main'
+					})
+					.when('/four',{
+						templateUrl:'./four.html',
+						controller:'main'
+					})
+					.otherwise({
+						redirectTo:'/one'
+					})
+			})
+</script>

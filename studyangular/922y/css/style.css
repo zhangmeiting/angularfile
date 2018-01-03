@@ -1,0 +1,141 @@
+@import url(reset.css);
+html, body, .box {
+  width: 100%;
+  height: 100%; }
+
+body {
+  font-size: 0.16rem; }
+
+.box {
+  display: flex;
+  flex-direction: column; }
+
+header {
+  width: 100%;
+  height: auto; }
+
+.top {
+  width: 100%;
+  height: 0.84rem;
+  background: #FA828C;
+  display: flex;
+  justify-content: space-between; }
+  .top b {
+    font-size: 0.35rem;
+    color: white;
+    line-height: 0.84rem; }
+  .top .iconfont {
+    font-size: 0.45rem;
+    color: white;
+    line-height: 0.84rem;
+    padding-right: 0.2rem; }
+
+.bottom {
+  width: 100%;
+  height: 1.05rem;
+  background: white;
+  text-align: center;
+  line-height: 1.05rem;
+  position: relative; }
+  .bottom input {
+    width: 90%;
+    height: 0.7rem;
+    text-align: center;
+    border: 0.01rem solid #FA828C;
+    line-height: 0.7rem;
+    font-size: 0.35rem;
+    outline: none;
+    border-radius: 0.4rem; }
+  .bottom .iconfont {
+    position: absolute;
+    left: 8%;
+    top: 0;
+    font-size: 0.45rem;
+    color: #FA828C; }
+
+main {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden; }
+
+.add {
+  width: 100%;
+  height: 3.0rem; }
+  .add .up {
+    width: 100%;
+    height: 3.0rem; }
+    .add .up ul {
+      width: 100%;
+      height: 3.0rem; }
+      .add .up ul li {
+        width: 100%;
+        height: 3.0rem; }
+        .add .up ul li img {
+          width: 100%;
+          height: 100%; }
+
+.center {
+  width: 100%;
+  height: 0.85rem;
+  border-bottom: 0.02rem solid #ccc;
+  display: flex;
+  justify-content: center; }
+  .center ol {
+    display: flex;
+    height: 0.83rem;
+    width: 70%; }
+    .center ol li {
+      flex: 1;
+      height: 0.83rem;
+      line-height: 0.83rem;
+      text-align: center;
+      font-size: 0.25rem; }
+    .center ol li.bg {
+      border-bottom: 0.02rem solid #FA828C; }
+
+.down {
+  width: 100%;
+  height: auto;
+  margin-top: 0.24rem; }
+  .down ol {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; }
+    .down ol li {
+      width: 32%;
+      height: 2.3rem;
+      margin-top: 0.2rem; }
+      .down ol li img {
+        width: 100%;
+        height: 100%; }
+
+footer {
+  width: 100%;
+  height: 0.96rem; }
+  footer ul {
+    width: 100%;
+    height: 0.96rem;
+    display: flex; }
+    footer ul li {
+      flex: 1; }
+      footer ul li .iconfont {
+        font-size: 0.45rem;
+        color: #FA828C;
+        display: block;
+        text-align: center;
+        margin-top: 0.1rem; }
+      footer ul li b {
+        font-size: 0.25rem;
+        color: #FA828C;
+        display: block;
+        text-align: center;
+        line-height: 0.4rem; }
+    footer ul li.active {
+      background: #FA828C; }
+      footer ul li.active .iconfont {
+        color: white; }
+      footer ul li.active b {
+        color: white; }
+
+/*# sourceMappingURL=style.css.map */

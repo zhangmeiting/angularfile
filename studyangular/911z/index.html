@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-controller="main">
+	<!-- <tab></tab> -->
+	<tab data="data"></tab>
+</body>
+<script src="angular.min.js"></script>
+</html>
+<script>
+	angular.module('app',[])
+			.controller('main',['$scope',function($scope){
+				$scope.data=[
+					{
+						name:1,
+						value:[1,'王青宇1','男','13929382847','三鑫社区居委会']
+						
+					},
+					{
+						name:2,
+						value:[2,'王青宇2','男','13929382847','三鑫社区居委会']
+						
+					},
+					{
+						name:3,
+						value:[3,'王青宇3','男','13929382847','三鑫社区居委会']
+						
+					}
+				
+				]
+			}])
+			.directive('tab',function(){
+				return {
+					restrict:'ECMA',
+
+					templateUrl:'./page.html',
+					controller:['$scope',function($scope){
+							$scope.fn=function(value){
+							$scope.value=value;
+						}
+					}],
+					scope:{
+						data:'='
+					}
+				}
+			})
+</script>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='app'>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div ng-controller='main'>
+		{{obj.name}}
+		{{obj.sex}}
+		<add name="{{obj.name}}" sex="obj.sex"></add>
+	</div>
+
+</body>
+<script src="angular.min.js"></script>
+</html>
+<script>
+	angular.module('app',[])
+			.controller('main',function($scope){
+				$scope.obj={
+					name:'zs',
+					age:12,
+					sex:'boy'
+				}
+			})
+			.directive('add',function(){
+				return {
+					restrict:'ECMA',
+					 scope:{
+					 	name:'@name',
+						sex:'=sex'
+					 },
+					templateUrl:'add.html',
+					controller:function($scope){
+						console.log($scope.name);
+						console.log($scope.sex);
+						$scope.name+='123';
+						$scope.sex+='456';
+						console.log($scope.name);
+						console.log($scope.sex);
+					},
+					link:function(scope,ele,attr,controller){
+
+					}
+				}
+			})
+</script>

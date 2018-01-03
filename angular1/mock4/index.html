@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body ng-controller="main">
+    {{valssss}}
+    打开方式  $gulp 复制文件index.html 在浏览器打开
+</body>
+<script src="angular.min.js"></script>
+</html>
+<script>
+    angular.module('app',[])
+            .controller('main',['$scope','$http',function($scope,$http){
+                $http({
+                    url:'http://localhost:8888/index.html?data'
+                }).then(function(res){
+                    $scope.valssss=res.data.data;
+                    console.log(res.data);
+                },function(err){
+                    console.log(err);
+                })
+            }])
+</script>

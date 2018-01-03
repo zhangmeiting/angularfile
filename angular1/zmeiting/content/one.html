@@ -1,0 +1,58 @@
+<div class="imgs swiper-container">
+    <ul class="swiper-wrapper">
+        <li class="swiper-slide"><img src="img/1.jpg" alt=""><p>国道318~神秘亚丁之旅</p></li>
+        <li class="swiper-slide"><img src="img/1.jpg" alt=""><p>国道318~神秘亚丁之旅</p></li>
+        <li class="swiper-slide"><img src="img/1.jpg" alt=""><p>国道318~神秘亚丁之旅</p></li>
+    </ul>
+    <div class="swiper-pagination"></div>
+</div>
+<div class="ps">
+    <p><i class="iconfont">&#xe64f;</i><input type="text" value="搜索游记"/></p>
+</div>
+<div class="items">
+    <dl>
+        <dd><p>北京</p></dd>
+        <dd><p>西藏</p></dd>
+        <dd><p>三亚</p></dd>
+        <dd><p>成都</p></dd>
+        <dd><p>更多</p></dd>
+    </dl>
+
+</div>
+
+<div class="center">
+    <h3><span>小编原创<em>罗浩原创</em></span><b>全部   ></b></h3>
+    <div class="area">
+        <dl>
+            <dd><b>独闯美国第二季 美国东海岸游记 (下)</b></dd>
+            <dt><img src="img/2.jpg" alt=""></dt>
+            <dd><span>387.8万人浏览</span><span>2-16</span></dd>
+        </dl>
+    </div>
+</div>
+<div class="center">
+    <h3><span>小编推荐</span><b>全部   ></b></h3>
+    <div class="area">
+        <dl>
+            <dd><b>辽宁本溪: 南芬大峡谷-吓退司马懿</b></dd>
+            <dt><img src="img/3.jpg" alt=""></dt>
+            <dd><span>387.8万人浏览</span><span>2-16</span></dd>
+        </dl>
+    </div>
+</div>
+<div class="down" id="down">
+    <h3><span>精彩游记</span><b>全部游记   ></b></h3>
+    <div class="area">
+        <div id="area">
+            <dl ng-repeat="vals in vals">
+                <dd>
+                    <p>
+                        {{vals.title}}
+                    </p>
+                    <h6><span>{{vals.word}}</span><span>{{vals.dates}}</span></h6>
+                </dd>
+                <dt><img ng-src="{{vals.src}}" alt=""></dt>
+            </dl>
+        </div>
+    </div>
+</div>

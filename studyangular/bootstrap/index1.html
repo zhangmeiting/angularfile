@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-controller="main">
+	{{data}}
+</body>
+<script src="./js/angular.js"></script>
+
+<script src="./js/angular-animate.js"></script>
+<script src="./js/ui-bootstrap-tpls.js"></script>
+</html>
+<script>
+	// function initzhangsan(){
+	// 	if(!initzhangsan.sref){
+	// 		this.name='zhangsan';
+	// 		initzhangsan.sref=this;
+	// 	}else{
+	// 		return initzhangsan.sref;
+	// 	}
+	// }
+	// var zs1=new initzhangsan();
+	// console.log(zs1);
+	// zs1.name='ls';
+	// var zs2=new initzhangsan();
+	// console.log(zs2.name);
+	// // console.log(zs1 === zs2);
+	
+
+
+
+	angular.module('bootStrapApp',['ui.bootstrap','ngAnimate'])
+	// angular.module('app',[])
+			.controller('main',['$scope',function($scope){
+				$scope.data='message';
+			}])
+	angular.bootstrap(document.documentElement,['bootStrapApp'])
+</script>

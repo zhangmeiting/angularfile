@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;padding: 0;
+			list-style: none;
+		}
+		.box{
+			width: 900px;
+			height: auto;
+			margin: 50px auto;
+		}
+		.box h5{
+			height: 50px;
+			line-height: 50px;
+		}
+		.box h6{
+			height: 40px;
+			line-height: 40px;
+			text-indent: 10px;
+			background: #eee;
+			color: blue;
+			border-bottom: 1px solid #ccc;
+		}
+		table{
+			width: 900px;
+			height: auto;
+			
+			border-collapse: collapse;
+		}
+		table tr{
+			width: 100%;
+			height: 40px;
+			line-height: 40px;
+			display: flex;
+		}
+		table tr th{
+			flex: 1;
+			text-align: center;
+			border-bottom: 1px solid #ccc;
+		}
+		table tr td{
+			border-bottom: 1px solid #ccc;
+			flex: 1;
+			text-align: center;
+		}
+		table tr td b{
+			padding: 0 5px;
+		}
+	</style>
+</head>
+<body ng-controller="main">
+	<div class="box">
+		<h5>
+			状态 
+			<select name="" id="">
+				<option value="" selected="selected">全部</option>
+			</select>
+			名称
+			<input type="text" ng-model="filtervalue">
+			<button ng-click="search()">查阅</button>
+		</h5>
+		<h6>列表</h6>
+		<table>
+			<tr>
+				<th>ID</th>
+				<th>名称</th>
+				<th>状态</th>
+				<th>序号</th>
+				<th>创建</th>
+				<th>操作</th>
+			</tr>
+			<tr ng-repeat="item in data | filter : {id : filtervalue}">
+				<!-- <td>1</td>
+				<td>管理员1</td>
+				<td>启用</td>
+				<td>1</td>
+				<td>2014-07-27 16:36</td>
+				<td><b>修改</b><strong>删除</strong></td> -->
+				<td>{{item.id}}</td>
+				<td>{{item.name}}</td>
+				<td>{{item.state}}</td>
+				<td>{{item.num}}</td>
+				<td>{{item.time}}</td>
+				<td><b>{{item.change}}</b><strong ng-click="deletes(item)">{{item.delete}}</strong></td>
+			</tr>
+		</table>
+	</div>
+</body>
+<script src="angular.min.js"></script>
+</html>
+<script>
+	angular.module('app',[])
+			.controller('main',['$scope','$http',function($scope,$http){
+					$http({
+						url:'http://localhost:8899/post',
+						method:'POST'
+					}).then(function(result){
+						 $scope.data=result.data;
+						console.log(result.data);
+					},function(error){
+						console.log(error);
+					})
+
+
+					$scope.search=function(filtervalue){
+
+						$http({
+							url:'http://localhost:8899/post',
+							method:'POST'
+						}).then(function(result){
+							$scope.data=result.data;
+							console.log(result.data);
+						},function(error){
+							console.log(error);
+						})
+
+					}
+
+
+
+					$scope.deletes=function(item){
+						////console.log(item.id);
+						$http({
+							url:'http://localhost:8899/deletes',
+							method:'POST',
+							data:{
+								id:item.id
+							}
+						}).then(function(result){
+							$scope.data=result.data;
+							console.log(result.data);
+						},function(error){
+							console.log(error);
+						})
+					}
+
+			}])
+</script>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=2,maximum-scale=1,user-scalable=no">
+    <link type="text/css" rel="stylesheet" href="Content/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="Content/css/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="Content/css/reset.css">
+    <link type="text/css" rel="stylesheet" href="Content/css/swiper.min.css">
+    <link type="text/css" rel="stylesheet" href="Content/css/common.css">
+    <link type="text/css" rel="stylesheet" href="Content/css/style.css">
+</head>
+<body ng-app="app">
+    <header class="header">
+        <ul class="nav1 text-center f16">
+            <li class="active"><a ng-href="#/server">服务</a></li>
+            <li><a ng-href="#/jr">金融</a></li>
+        </ul>
+        <i class="fa fa-search f20"></i>
+    </header>
+    <section class="section">
+        <ui-view></ui-view>
+    </section>
+    <footer class="footer">
+        <ul class="list text-center">
+            <li>
+                <i class="fa fa-home f20"></i>
+                <p>首页</p>
+            </li>
+            <li>
+                <i class="fa fa-glide f20"></i>
+                <p>论坛</p>
+            </li>
+            <li>
+                <i class="fa fa-car f20"></i>
+                <p>选车</p>
+            </li>
+            <li>
+                <i class="fa fa-ban f20"></i>
+                <p>发现</p>
+            </li>
+            <li>
+                <i class="fa fa-dashcube f20"></i>
+                <p>未登录</p>
+            </li>
+        </ul>
+    </footer>
+    <script type="text/javascript" src="Script/angular/angular.min.js"></script>
+    <script type="text/javascript" src="Script/angular/angular-ui-router.js"></script>
+
+    <!--<script type="text/javascript" src="Script/bootstrap.min.js"></script>-->
+    <script type="text/javascript" src="Script/swiper.min.js"></script>
+    <script type="text/javascript" src="Script/iscroll.js"></script>
+
+
+    <script type="text/javascript" src="App/app.js"></script>
+
+    <script type="text/javascript" src="App/Service/baseServer.js"></script>
+    <script type="text/javascript" src="App/Service/fwServer.js"></script>
+
+    <script type="text/javascript" src="App/Controller/serverController.js"></script>
+    <script type="text/javascript" src="App/Controller/jrController.js"></script>
+
+    <script type="text/javascript" src="App/Directive/serverDirective.js"></script>
+</body>
+</html>

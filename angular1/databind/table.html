@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='app'>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/common.css">
+</head>
+<body ng-controller='main'>
+	<div class="container">
+		<!-- <table class="table table-bordered table-responsive">
+			<thead>
+				<tr>
+					<th ng-click='fn("name")'>name</th>
+					<th ng-click='fn("age")'>age</th>
+					<th ng-click='fn("sex")'>sex</th>
+					<th ng-click='fn("address")'>address</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="val in array | orderBy:item:booleans">
+					<td>{{val.name}}</td>
+					<td>{{val.age}}</td>
+					<td>{{val.sex}}</td>
+					<td>{{val.address}}</td>
+				</tr>
+			</tbody>
+		</table> -->
+		<div class="panel panel-primary">
+			<ul class="panel-heading clearfix text-center">
+				<li ng-click='fn("name")' class="col-xs-3">name</li>
+				<li ng-click='fn("age")' class="col-xs-3">age</li>
+				<li ng-click='fn("sex")' class="col-xs-3">sex</li>
+				<li ng-click='fn("address")' class="col-xs-3" class="col-xs-3" class="col-xs-3">address</li>
+			</ul>
+			<div class="panel-body">
+				<ul ng-repeat="val in array | orderBy:item:booleans" class="list-group-item">
+					<li>{{val.name}}</li>
+					<li>{{val.age}}</li>
+					<li>{{val.sex}}</li>
+					<li>{{val.address}}</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="js/angular.min.js"></script>
+</html>
+<script>
+	angular.module('app',[])
+			.controller('main',function($scope){
+				$scope.array=[
+					{
+						name:'zs',
+						age:16,
+						sex:'boy',
+						address:'北京'
+					},
+					{
+						name:'ls',
+						age:17,
+						sex:'girl',
+						address:'上海'
+					},
+					{
+						name:'wr',
+						age:30,
+						sex:'old boy',
+						address:'广州'
+					},
+					{
+						name:'mz',
+						age:36,
+						sex:'old girl',
+						address:'深圳'
+					}
+				]
+				$scope.booleans=false;
+				$scope.fn=function(item){
+					$scope.item=item;
+					$scope.booleans=!$scope.booleans;
+				}
+			})
+</script>

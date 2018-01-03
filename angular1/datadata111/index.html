@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='app'>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-controller='main'>
+	<ul>
+		<li ng-repeat='vals in val'>{{vals.words}}</li>
+	</ul>
+</body>
+<script src="angular.min.js"></script>
+</html>
+<script>
+	angular.module('app',[])
+			.controller('main',['$scope','add',function($scope,add){
+				add.server().then(function(result){
+					$scope.val=result.data;
+				})
+			}])
+			.factory('add',function($http,$q){
+				return {
+					server:function(){
+						var defer=$q.defer();
+						$http({
+							url:'data.json'
+						}).then(function(res){
+							defer.resolve(res);
+						})
+						return defer.promise;
+					}
+				}
+			})
+</script>

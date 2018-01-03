@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box{
+			width: 100px;
+			height: 100px;
+			border: 1px solid #ccc;
+		}
+		
+	</style>
+</head>
+<body ng-controller="main">
+	<div class="box" ng-style="color()"></div>
+	<input type="range" min="0" max="255" ng-model="r">
+	<input type="number" min="0" max="255" ng-model="r">
+	<br/>
+	<input type="range" min="0" max="255" ng-model="g">
+	<input type="number" min="0" max="255" ng-model="g">
+	<br/>
+	<input type="range" min="0" max="255" ng-model="b">
+	<input type="number" min="0" max="255" ng-model="b">
+	<br/>
+	<input type="range" min="0" max="1" step="0.01" ng-model="a">
+	<input type="number" min="0" max="1" step="0.01" ng-model="a">
+</body>
+<script src="angular.min.js"></script>
+</html>
+<script>
+	angular.module('app',[])
+		.controller('main',['$scope',function($scope){
+			$scope.r=88;
+			$scope.g=88;
+			$scope.b=88;
+			$scope.a=0.22;
+			$scope.color=function(){
+				return {"background":"rgba("+$scope.r+","+$scope.g+","+$scope.b+","+$scope.a+")"}
+			}
+		}])
+</script>

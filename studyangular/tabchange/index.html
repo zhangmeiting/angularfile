@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-controller="main">
+	<tab data="data"></tab>
+</body>
+<script src="angular.min.js"></script>
+</html>
+<script>
+	angular.module('app',[])
+			.controller('main',['$scope',function($scope){
+				$scope.data=[
+					{
+						name:'按钮1',
+						value:[1,2,3,4]
+					},
+					{
+						name:'按钮2',
+						value:[5,6,7,8]
+					},
+					{
+						name:'按钮3',
+						value:[9,10,11,12]
+					},
+					{
+						name:'按钮4',
+						value:[13,14,15,16]
+					}
+				]
+			}])
+			.directive('tab',[function(){
+				return {
+					restrict:'E',
+					templateUrl:'./tab.html',
+					controller:['$scope',function($scope){
+						$scope.fn=function(value){
+							$scope.value=value;
+						}
+					}],
+					scope:{
+						data:'='
+					}
+					
+				}
+			}])
+</script>

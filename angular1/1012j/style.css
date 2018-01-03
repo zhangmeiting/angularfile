@@ -1,0 +1,41 @@
+*{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+p{
+	margin: 10px 0;
+}
+p span{
+	display: inline-block;
+	width: 100px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	border: 1px solid black;
+	margin: 0px 10px;
+}
+p b{
+	display: inline-block;
+	width: 60px;
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+	border: 1px solid black;
+	margin: 0px 10px;
+}
+ul{
+	display: flex;
+}
+ul li{
+	width: 60px;
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+	border: 1px solid black;
+	margin: 0px 10px;
+}
+ul li.bg{
+	background: pink;
+	color: white;
+}

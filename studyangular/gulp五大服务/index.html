@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-controller="main">
+	{{value}}
+</body>
+<script src="angular.min.js"></script>
+</html>
+<script>
+	angular.module('app',[])
+			.controller('main',['$scope','constantValue','value','service','factory','provider',function($scope,constantValue,value,service,factory,provider){
+			$scope.message='hello';	
+			$scope.value=constantValue;
+			$scope.value=value;
+			console.log('controller');
+			console.log(service.name+service.age);
+			service.work();
+			factory.work();
+			console.log(provider.name,provider.age);
+			provider.work();
+			// console.log(provider.key);
+			// provider.fns();
+			}])
+			.config(['constantValue',function(constantValue){
+						
+						console.log(constantValue);
+						
+							console.log('config');
+						}])
+			.run(['$rootScope','constantValue','value',function($rootScope,constantValue,value){
+						console.log($rootScope);
+						console.log(constantValue);
+						console.log(value);
+							console.log('run');
+						}])
+			/////config run controller
+		.constant('constantValue',{
+			key:'我是常量'
+		})
+		.value('value',{
+			key:'我是变量'
+		})
+		.service('service',function(){
+			this.name='zs';
+			this.age=18;
+			this.work=function(){
+				console.log('working');
+			}
+		})
+		.factory('factory',function(){
+			return {
+				name:'ls',
+				age:20,
+				work:function(){
+					console.log('factory');
+				}
+			}
+		})
+		.provider('provider',function(){
+			return {
+				$get:function(){
+					// return {
+					// 	key:'providerproviderproider',
+					// 	fns:function(){
+					// 		console.log('fnsfnsfns');
+					// 	}
+					// }
+					return new function(){
+						this.age='80';
+						this.name='provider';
+						this.work=function(){
+							console.log('provider1111');
+						}
+					}
+				}
+			}
+		})
+</script>

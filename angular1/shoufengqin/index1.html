@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		dl{
+			width: 300px;
+			height: auto;
+		}
+		dl dt{
+			width: 300px;
+			background: skyblue;
+			height: 40px;
+			line-height: 40px;
+			text-align: center;
+		}
+		dl dd{
+			width: 300px;
+			background: orange;
+			height: 40px;
+			line-height: 40px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body ng-controller='main'>
+	<div class="box">
+		<dl ng-click="fun()">
+			<dt>title</dt>
+			<dd ng-show="val1">111</dd>
+			<dd ng-show="val1">222</dd>
+			<dd ng-show="val1">333</dd>
+		</dl>
+		<dl ng-click="fun()">
+			<dt>title</dt>
+			<dd ng-show="val2">111</dd>
+			<dd ng-show="val2">222</dd>
+		</dl>
+		<dl ng-click="fun()">
+			<dt>title</dt>
+			<dd ng-show="val3">111</dd>
+		</dl>
+	</div>
+</body>
+<script src="angular.min.js"></script>
+</html>
+<script>
+	angular.module('app',[])
+			.controller('main',['$scope',function($scope){
+				$scope.val1=false;
+				$scope.val2=false;
+				$scope.val3=false;
+				$scope.fun=function(){
+					if(!$scope.val1){
+						$scope.val1=true;
+						$scope.val2=false;
+						$scope.val3=false;
+					}else if(!$scope.val2){
+						$scope.val1=false;
+						$scope.val2=true;
+						$scope.val3=false;
+					}else if(!$scope.val3){
+						$scope.val1=false;
+						$scope.val2=false;
+						$scope.val3=true;
+					}
+				}
+			}])
+</script>

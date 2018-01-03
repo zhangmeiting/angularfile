@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
+	<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<meta name="format-detection" content="telphone=no, email=no" >
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="iconfont/iconfont.css">
+	<link rel="stylesheet" href="css/ionic.css">
+	<script>
+		document.documentElement.style.fontSize=window.innerWidth/375*50+'px';
+	</script>
+	<title>$ http-server localhost:8080</title>
+</head>
+<body ng-controller="main">
+	<div class="box">
+		<header>
+			<ul>
+				<li><a href="" class="iconfont" ui-sref="one">&#xe636;</a></li>
+				<li><a href="" class="iconfont" ui-sref="two">&#xe624;</a></li>
+				<li><a href="" class="iconfont" ui-sref="three">&#xe63f;</a></li>
+			</ul>
+		</header>
+		<ui-view></ui-view>
+	</div>
+</body>
+<!-- <script src="angular.min.js"></script> -->
+<script src="js/angular1.3.3.js"></script>
+<script src="js/angular-ui-router.js"></script>
+<script src="js/ionic.bundle.js"></script>
+<script src="js/ionic.js"></script>
+<script src="js/ionic-angular.js"></script>
+</html>
+<script>
+	angular.module('app',['ui.router','ionic'])
+			.config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
+				$urlRouterProvider.otherwise('/one');
+				$urlRouterProvider.when('/one','/one/four');
+				$stateProvider.state('one',{
+					url:'/one',
+					templateUrl:'html/1.html',
+					controller:['$scope',function($scope){
+
+					}]
+				})
+				.state('two',{
+					url:'/two',
+					templateUrl:'html/2.html',
+					controller:['$scope',function($scope){
+						
+					}]
+				})
+				.state('three',{
+					url:'/three',
+					templateUrl:'html/3.html',
+					controller:['$scope',function($scope){
+						
+					}]
+				})
+				.state('one.four',{
+					url:'/four',
+					templateUrl:'html/4.html',
+					controller:['$ionicSlideBoxDelegate','$scope',function($ionicSlideBoxDelegate,$scope){
+                        $scope.goTo = function(index){
+                            $ionicSlideBoxDelegate.slide(index,[2000])
+                        }
+                        $scope.imgArr = ['./img/banner1.jpg','./img/banner2.jpg','./img/banner.jpg','./img/banner3.jpg']
+                    }]
+				})
+				.state('one.five',{
+					url:'/five',
+					templateUrl:'html/5.html',
+					controller:['$scope',function($scope){
+						
+					}]
+				})
+				.state('one.six',{
+					url:'/six',
+					templateUrl:'html/6.html',
+					controller:['$scope',function($scope){
+						
+					}]
+				})
+				.state('one.seven',{
+					url:'/seven',
+					templateUrl:'html/7.html',
+					controller:['$scope',function($scope){
+						
+					}]
+				})
+
+			}])
+			.controller('main',['$scope',function($scope){
+
+			}])
+</script>

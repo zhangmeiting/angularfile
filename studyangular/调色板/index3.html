@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box{
+			width: 600px;
+			margin: 30px auto;
+		}
+		table,tr,td,th{
+			border-bottom: 1px solid #333;
+			border-collapse: collapse;
+		}
+		tr,td{
+			width: 20%;
+			line-height: 150%;
+			text-align: center;
+		}
+		tr,th{
+			width: 20%;
+			line-height: 150%;
+			text-align: center;
+		}
+		tr:nth-child(2n){
+			background: #eee;
+		}
+	</style>
+</head>
+<body ng-controller="main">
+	<div class="box">
+		<table width="600">
+			<tr>
+				<th ng-click="changesort('sid')">
+					学号
+					<span ng-show="{{sortby == 'sid'}}">{{asc ? 'up':'down'}}</span>
+				</th>
+				<th ng-click="changesort('name')">
+					姓名
+					<span ng-show="{{sortby=='name'}}">{{asc ? 'up':'down'}}</span>
+				</th>
+				<th ng-click="changesort('yuwen')">
+					语文成绩
+					<span ng-show="{{sortby=='yuwen'}}">{{asc ? 'up':'down'}}</span>
+				</th>
+				<th ng-click="changesort('shuxue')">
+					数学成绩
+					<span ng-show="{{sortby=='shuxue'}}">{{asc ? 'up':'down'}}</span>
+				</th>
+				<th ng-click="changesort('yingyu')">
+					英语成绩
+					<span ng-show="{{sortby=='yingyu'}}">{{asc ? 'up':'down'}}</span>
+				</th>
+				<th>删除</th>
+			</tr>
+			<tr ng-repeat="item in data">
+				<!-- <td>1</td>
+				<td>zs</td>
+				<td>1</td>
+				<td>1</td>
+				<td>1</td> -->
+				<td>{{item.sid}}</td>
+				<td>{{item.name}}</td>
+				<td>{{item.yuwen}}</td>
+				<td>{{item.shuxue}}</td>
+				<td>{{item.yingyu}}</td>
+				<td><input type="button" value="delete" ng-click="remove(item.sid)"></td>
+			</tr>
+		</table>
+	</div>
+	<div class="form">
+		<p>{{obj}}</p>
+		<p>
+			学号: <input type="text" ng-model="obj.sid"/>
+		</p>
+		<p>
+			姓名: <input type="text" ng-model="obj.name"/>
+		</p>
+		<p>
+			语文: <input type="text" ng-model="obj.yuwen"/>
+		</p>
+		<p>
+			数学: <input type="text" ng-model="obj.shuxue"/>
+		</p>
+		<p>
+			英语: <input type="text" ng-model="obj.yingyu"/>
+		</p>
+		<p>
+			<input type="button" value="添加" ng-click="add()">
+		</p>
+	</div>
+</body>
+<script src="angular.min.js"></script>
+</html>
+<script>
+	angular.module('app',[])
+			.controller('main',['$scope',function($scope){
+				$scope.data=[
+					{
+						sid:1,
+						name:'zs',
+						yuwen:11,
+						shuxue:11,
+						yingyu:11
+					},
+					{
+						sid:2,
+						name:'zs2',
+						yuwen:33,
+						shuxue:33,
+						yingyu:33
+					},
+					{
+						sid:3,
+						name:'zs3',
+						yuwen:22,
+						shuxue:22,
+						yingyu:22
+					},
+					{
+						sid:4,
+						name:'zs4',
+						yuwen:44,
+						shuxue:44,
+						yingyu:44
+					}
+				]
+				$scope.obj={};
+				$scope.add=function(){
+					$scope.data.push($scope.obj);
+					$scope.obj={};
+				}
+				$scope.remove=function(sid){
+					for(var i=0;i<$scope.data.length;i++){
+						if($scope.data[i].sid==sid){
+							$scope.data.splice(i,1);
+						}
+					}
+				}
+				$scope.sortby='yuwen';
+				/////$scope.sortby='name';
+				$scope.asc=true;
+				$scope.changesort=function(val){
+					if($scope.sortby==val){
+						$scope.asc=!$scope.asc;
+					}else{
+						$scope.sortby=val;
+						$scope.asc=true;
+					}
+				}
+				$scope.data.sort(function(a,b){
+					if(a[$scope.sortby] > b[$scope.sortby]){
+						return $scope.asc?1:-1;
+					}else{
+						return $scope.asc?-1:1;
+					}
+				})
+			}])
+</script>

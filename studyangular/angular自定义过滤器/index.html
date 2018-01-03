@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-controller="main">
+	{{message | takeouto : 1}}
+	{{mes | lowercaseletterofrange :0:4}}
+</body>
+<script src="angular.min.js"></script>
+</html>
+<script>
+	angular.module('app',[])
+			.controller('main',['$scope',function($scope){
+				$scope.message='hello world111222';
+				$scope.mes='HELLO world111222';
+			}])/////return this 实现链式调用
+			.filter('takeouto',['$rootScope',function($rootScope){
+					return function(input,param1){
+						var exp=new RegExp(param1,'g');
+						input=input.replace(exp,'')
+						return input;
+					}
+			}])
+			.filter('lowercaseletterofrange',function(){
+				return function(input,startindex,endindex){
+					var oldstr=input.substring(startindex*1,endindex*1+1);
+					var newstr=oldstr.toLowerCase();
+					var output=input.replace(oldstr,newstr);
+					return output;
+				}
+			})
+
+
+
+						
+</script>

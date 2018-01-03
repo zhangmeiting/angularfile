@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;padding: 0;list-style: none;
+		}
+		.box{
+			width: 600px;
+			height: auto;
+			margin: 50px auto;
+		}
+		.top{
+			width: 100%;
+			height: auto;
+		}
+		.top h6{
+			height: 40px;
+			line-height: 40px;
+			color: #ccc;
+			font-size: 16px;
+		}
+		.top ul{
+			width: 400px;
+			height: 150px;
+			border: 1px solid #ccc;
+			border-radius: 10px;
+		}
+		.top ul li{
+			list-style: none;
+			height: 40px;
+			line-height: 40px;
+			text-indent: 15px;
+			font-size: 14px;
+			color: black;
+		}
+		.top ul li button{
+			outline: none;
+			border: none;
+			color:#ccc;
+			background: none;
+			padding-left: 15px;
+		}
+		.top ul li b{
+			padding-left: 15px;
+		}
+		.top ul li input {
+			outline: none;
+			border: none;
+			background: none;
+			width: 310px;
+		}
+		.bottom{
+			margin-top: 10px;
+		}
+		.bottom h6{
+			height: 40px;
+			line-height: 40px;
+		}
+		.bottom h6 button{
+			width: 100px;
+			height: 40px;
+			line-height: 40px;
+			text-align: center;
+			background: #ddd;
+			color: white;
+			border-radius: 16px;
+			outline: none;
+			border: none;
+		}
+		.bottom ol li{
+			/*border-left: 2px solid green;*/
+		}
+		.bottom ol li p{
+			line-height: 30px;height: 30px;
+			display: inline-block;
+		}
+		.bottom ol li b{
+			display: inline-block;
+			width: 8px;
+			height: 8px;
+			border-radius: 100%;
+			background: green;
+			margin: 0 10px;
+		}
+		.bottom ol li h5{
+			text-indent: 26px;
+			font-weight: normal;
+			font-size: 16px;
+		}
+	</style>
+</head>
+<body ng-controller="main">
+	<div class="box">
+		<div class="top">
+			<h6>个人信息确认:</h6>
+			<ul>
+				<li>小叮当<b>132******12</b></li>
+				<li><input type="text" value="北京市  朝阳区  建国门外大街  赛特大厦15层" ng-disabled="value"><button ng-click="fn()">更换></button></li>
+				<li>邮编: <b>100000</b></li>
+			</ul>
+		</div>
+		<div class="bottom">
+			<h6><button>已确认</button></h6>
+			<ol><!-- 
+				<li>
+					<b></b><p>2016-01-01 12:15:16</p>
+					<h5>确认信息</h5>
+				</li>
+				<li><b></b><p>等待发放奖品</p>
+					<h5></h5>
+				</li>
+				<li>
+					<b></b><p>2016-01-02 12:15:16</p>
+					<h5>奖品已发放 (快递单号:12345678900)</h5>
+				</li> -->
+				<li ng-repeat="item in data"><b></b><p>{{item.time}}</p>
+					<h5>{{item.msg}}</h5>
+				</li>
+			</ol>
+		</div>
+	</div>
+</body>
+<script src="angular.min.js"></script>
+</html>
+<script>
+	angular.module('app',[])
+			.controller('main',['$scope','$http',function($scope,$http){
+				$scope.value=true;
+				$scope.fn=function(){
+					$scope.value=false;
+				}
+				$http({
+					url:'http://localhost:8899/post',
+					method:'POST'
+				}).then(function(result){
+					$scope.data=result.data;
+					console.log(result.data);
+				},function(error){
+					console.log(error);
+				})
+			}])
+</script>

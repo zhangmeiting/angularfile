@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
+	<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<meta name="format-detection" content="telphone=no, email=no" >
+	<title>Document</title>
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="fonts/iconfont.css">
+	<script>
+		document.documentElement.style.fontSize=window.innerWidth/320*50+'px';
+	</script>
+</head>
+<body ng-controller="main">
+	<div class="box">
+		<header>
+			<div class="top">
+				<b></b>
+				<i>停车场管理数据</i>
+				<i></i>
+			</div>
+			<div class="bottom">
+				<ul>
+					<li ui-sref="one" ui-sref-active="bg">
+						<b>订单统计</b>
+						<i></i>
+					</li>
+					<li ui-sref="two" ui-sref-active="bg">
+						<b>占有率与频率</b>
+						<i></i>
+					</li>
+					<li ui-sref="three" ui-sref-active="bg">
+						<b>费用统计</b>
+						<i></i>
+					</li>
+				</ul>
+			</div>
+		</header>
+		<main>
+			
+			<ui-view></ui-view>
+		</main>
+		<footer>
+			<ul>
+				<li ng-click="fn1()" ng-class="val1">
+					<p><i class="iconfont">&#xe60c;</i></p>
+					<b>考情管理</b>
+				</li>
+				<li ng-click="fn2()" ng-class="val2">
+					<p><i class="iconfont">&#xe738;</i></p>
+					<b>停车场管理</b>
+				</li>
+				<li ng-click="fn3()" ng-class="val3">
+					<p><i class="iconfont">&#xe69f;</i></p>
+					<b>账号管理</b>
+				</li>
+				<li ng-click="fn4()" ng-class="val4">
+					<p><i class="iconfont">&#xe60f;</i></p>
+					<b>我的</b>
+				</li>
+			</ul>
+		</footer>
+		
+	</div>
+</body>
+<script src="js/angular.min.js"></script>
+<script src="js/angular-ui-router.js"></script>
+<script src="js/echarts.min.js"></script>
+</html>
+
+			<script>
+		 // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('box'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: 'ECharts 入门示例'
+            },
+            tooltip: {},
+            legend: {
+                data:['价格']
+            },
+            xAxis: {
+                data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+            },
+            yAxis: {},
+            series: [{
+                name: '价格',
+                type: 'bar',
+                data: [100, 200, 360, 100, 100, 200]
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+	</script>
+<script>
+	angular.module('app',['ui.router'])
+			.config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
+				$urlRouterProvider.otherwise('/two');
+				$stateProvider.state('one',{
+					url:'/one',
+					templateUrl:'html/one.html',
+					controller:['$scope',function(){
+
+					}]
+				})
+				.state('two',{
+					url:'/two',
+					templateUrl:'html/two.html',
+					controller:['$scope',function(){
+						
+					}]
+				})
+				.state('three',{
+					url:'/three',
+					templateUrl:'html/three.html',
+					controller:['$scope',function(){
+						
+					}]
+				})
+				
+			}])
+			.controller('main',['$scope',function($scope){
+					$scope.val1='';
+					$scope.val2='active';
+					$scope.val3='';
+					$scope.val4='';
+					$scope.fn1=function(){
+						$scope.val1='active';
+						$scope.val2='';
+						$scope.val3='';
+						$scope.val4='';
+					}
+					$scope.fn2=function(){
+						$scope.val2='active';
+						$scope.val1='';
+						$scope.val3='';
+						$scope.val4='';
+					}
+					$scope.fn3=function(){
+						$scope.val3='active';
+						$scope.val1='';
+						$scope.val2='';
+						$scope.val4='';
+					}
+					$scope.fn4=function(){
+						$scope.val4='active';
+						$scope.val1='';
+						$scope.val3='';
+						$scope.val2='';
+					}
+
+			}])
+					
+</script>

@@ -1,0 +1,163 @@
+<div class="imgs swiper-container">
+    <ul class="swiper-wrapper">
+        <li class="swiper-slide"><img src="img/c1.jpg" alt=""></li>
+        <li class="swiper-slide"><img src="img/c1.jpg" alt=""></li>
+        <li class="swiper-slide"><img src="img/c1.jpg" alt=""></li>
+    </ul>
+    <div class="swiper-pagination"></div>
+</div>
+<div class="items">
+    <dl>
+        <dt><i class="iconfont">&#xe62c;</i></dt>
+        <dd>车商城</dd>
+    </dl>
+    <dl class="dl1">
+        <dt><i class="iconfont">&#xe63a;</i></dt>
+        <dd>分期购车</dd>
+    </dl>
+    <dl>
+        <dt><i class="iconfont">&#xe62b;</i></dt>
+        <dd>团购活动</dd>
+    </dl>
+    <dl class="dl2">
+        <dt><i class="iconfont">&#xe65a;</i></dt>
+        <dd>找二手车</dd>
+    </dl>
+</div>
+<div class="mimgs">
+    <img src="img/m1.jpg" alt="">
+</div>
+<div class="fonts">
+    <h3>车组服务</h3>
+    <div class="cars1">
+        <dl>
+            <dt><i class="iconfont">&#xe62c;</i></dt>
+            <dd>车品商城</dd>
+        </dl>
+        <dl class="dl1">
+            <dt><i class="iconfont">&#xe63a;</i></dt>
+            <dd>洗车</dd>
+        </dl>
+        <dl>
+            <dt><i class="iconfont">&#xe62b;</i></dt>
+            <dd>违章代缴</dd>
+        </dl>
+        <dl class="dl2">
+            <dt><i class="iconfont">&#xe65a;</i></dt>
+            <dd>免费测评</dd>
+        </dl>
+    </div>
+    <div class="cars1">
+        <dl>
+            <dt><i class="iconfont">&#xe62b;</i></dt>
+            <dd>油卡充值</dd>
+        </dl>
+        <dl class="dl1">
+            <dt><i class="iconfont">&#xe65a;</i></dt>
+            <dd>低价保险</dd>
+        </dl>
+        <dl>
+            <dt><i class="iconfont">&#xe63a;</i></dt>
+            <dd>4S点保养</dd>
+        </dl>
+        <dl class="dl2">
+            <dt><i class="iconfont">&#xe62c;</i></dt>
+            <dd>品质轮胎</dd>
+        </dl>
+    </div>
+    <div class="cars1">
+        <dl>
+            <dt><i class="iconfont">&#xe63a;</i></dt>
+            <dd>查周边</dd>
+        </dl>
+        <dl class="dl1">
+            <dt><i class="iconfont">&#xe62c;</i></dt>
+            <dd>车主卡</dd>
+        </dl>
+        <dl>
+            <dt><i class="iconfont">&#xe65a;</i></dt>
+            <dd>领券保养</dd>
+        </dl>
+        <dl class="dl2">
+            <dt><i class="iconfont">&#xe62b;</i></dt>
+            <dd>全部</dd>
+        </dl>
+    </div>
+</div>
+<div class="center">
+    <h3><span>活动专区</span><b>更多活动   ></b></h3>
+    <div class="area">
+        <dl>
+            <dd>测身价炫富</dd>
+            <dd><p>身价大PK</p></dd>
+            <dt><img src="img/cs1.jpg" alt=""></dt>
+        </dl>
+        <dl>
+            <dd>全场0利率</dd>
+            <dd><p>购车无压力</p></dd>
+            <dt><img src="img/cs2.jpg" alt=""></dt>
+        </dl>
+        <dl>
+            <dd>好车分期</dd>
+            <dd><p>定制专属方案</p></dd>
+            <dt><img src="img/cs3.jpg" alt=""></dt>
+        </dl>
+    </div>
+</div>
+<div class="hot">
+    <div class="h3s">
+        <h3>
+            <p>限时抢购</p>
+            <p>
+                <span>13</span>:
+                <span>13</span>:
+                <span>13</span>
+            </p>
+        </h3>
+    </div>
+    <div id="harea">
+        <div class="harea1">
+            <dl>
+                <dt><img src="img/h1.jpg" alt=""></dt>
+                <dd>补胎工具简易套装</dd>
+                <dd><i>￥9.9元</i><em>28元</em></dd>
+            </dl>
+            <dl>
+                <dt><img src="img/h2.jpg" alt=""></dt>
+                <dd>车用椅背挂钩</dd>
+                <dd><i>￥9.9元</i><em>28元</em></dd>
+            </dl>
+            <dl>
+                <dt><img src="img/h1.jpg" alt=""></dt>
+                <dd>补胎工具简易套装</dd>
+                <dd><i>￥9.9元</i><em>28元</em></dd>
+            </dl>
+            <dl>
+                <dt><img src="img/h2.jpg" alt=""></dt>
+                <dd>车用椅背挂钩</dd>
+                <dd><i>￥9.9元</i><em>28元</em></dd>
+            </dl>
+            <dl>
+                <dt><img src="img/h1.jpg" alt=""></dt>
+                <dd>补胎工具简易套装</dd>
+                <dd><i>￥9.9元</i><em>28元</em></dd>
+            </dl>
+            <dl>
+                <dt><img src="img/h2.jpg" alt=""></dt>
+                <dd>车用椅背挂钩</dd>
+                <dd><i>￥9.9元</i><em>28元</em></dd>
+            </dl>
+        </div>
+    </div>
+</div>
+<div class="down">
+    <h3><span>猜你喜欢</span><b>更多   ></b></h3>
+    <div class="darea">
+        <dl ng-repeat="vals in val">
+            <dt><img ng-src="{{vals.src}}" alt=""></dt>
+            <dd>{{vals.name}}</dd>
+            <dd><p>{{vals.word}}</p></dd>
+            <dd><i>{{vals.price}}</i><em>{{vals.num}}</em></dd>
+        </dl>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-controller="main">
+    <select name="" id="" ng-model="languages" ng-change="changes(languages)">
+        <option value="cn">中文</option>
+        <option value="en">English</option>
+    </select>
+    {{languages}}
+	<ul>
+        <li>{{"name" |translate}}</li>
+        <li>{{"age" |translate}}</li>
+        <li>{{"sex" |translate}}</li>
+    </ul>
+</body>
+<script src="angular.min.js"></script>
+<script src="angular-translate.min.js"></script>
+</html>
+<script>
+    angular.module('app',['pascalprecht.translate'])
+    		.controller('main',['$scope','$translate',function($scope,$translate){
+    			$scope.languages='cn';
+    			$scope.changes=function(vals){
+    				$translate.use(vals);
+    			}
+    		}])
+            .config(function($translateProvider){
+                $translateProvider.translations('en',{
+                    "name":"bob",
+                    "age":"12",
+                    "sex":"boy"
+                })
+                $translateProvider.translations('cn',{
+                    "name":"鲍勃",
+                    "age":"12",
+                    "sex":"男"
+                })
+                $translateProvider.preferredLanguage('cn');
+            });
+</script>

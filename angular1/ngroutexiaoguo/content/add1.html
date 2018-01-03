@@ -1,0 +1,15 @@
+<div>
+	<div class="box">
+		<ul>
+			<li ng-repeat="val in val1" ng-class="{active:$first}">
+				{{val.title}}
+			</li>
+		</ul>
+	</div>
+	<div class="down">
+		<dl ng-repeat="val2 in val1">
+			<dt>{{val2.content}}</dt>
+			<dd><img ng-src="{{val2.imgurl}}" alt=""></dd>
+		</dl>
+	</div>
+</div>

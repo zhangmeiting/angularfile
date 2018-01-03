@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.top{
+			display: flex;
+		}
+		.top a{
+			flex: 1;
+		}
+	</style>
+</head>
+<body ng-controller="main">
+	<div class="top">
+		<a href="#!/home">首页</a>
+		<a href="#!/about">关于</a>
+		<a href="#!/me">我的</a>
+	</div>
+	<ng-view></ng-view>
+</body>
+<script src="angular.min.js"></script>
+<script src="angular-route.js"></script>
+</html>
+<script>
+	angular.module('app',['ngRoute'])
+			.constant('url','http://localhost:3333/goodslist')
+			.config(['$routeProvider',function($routeProvider){
+				$routeProvider.when('/home',{
+					template:'<div>home{{data.value}}{{controllerA.a}}</div>',
+					controller:['$scope','url','getData',function($scope,url,getData){
+						$scope.data=getData.go({
+							url:url
+						})
+						this.a='aaaaaaaaaa';
+					}],
+					controllerAs:'controllerA',
+					resolve:{////请求数据用的
+						getData:['$http','$q',function($http,$q){
+							return {
+								go:function(obj){
+									var defer=$q.defer();
+									$http(obj).then(function(result){
+										defer.resolve(result.data);
+									},function(error){
+										defer.reject(error);
+									})
+									return defer.promise.$$state;
+								}
+							}
+						}]
+					}
+				}).when('/about',{
+					template:'<div>about</div>'
+				}).when('/me',{
+					template:'<div>me</div>'
+				})
+			}])
+			.controller('main',['$scope',function($scope){
+			
+						}])
+</script>
